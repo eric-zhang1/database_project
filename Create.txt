@@ -1,0 +1,75 @@
+CREATE TABLE Warehouse(
+    Warehouse_ID text NOT NULL, City text, Address text, Phone text, MGR_Name text, Storage_Capacity int, Drone_Capacity int, 
+    primary key(Warehouse_ID)
+);
+
+CREATE TABLE Customer(
+    User_ID text NOT NULL, Fname text, Lname text, Address text, Phone text, Email text, Start_Date text, Status text, 
+    primary key(User_ID)
+);
+
+CREATE TABLE Purchase_Order(
+    Order_Number int NOT NULL, Element_Type text, Quantity int, Value float, Estimated_Arrival_Date date, Actual_Arrival_Date date,
+    primary key(Order_Number)
+);
+
+CREATE TABLE Rating_Review(
+    Customer_ID text, Review_ID text NOT NULL, Comment text, Rating int,
+    primary key(Review_ID),
+    foreign key(Customer_ID) references Customer(User_ID) ON UPDATE CASCADE
+);
+
+CREATE TABLE Shipment(
+    Warehouse_ID text, Shipment_ID text NOT NULL, Shipment_Date date, Arrival_Date date, Status text,
+    primary key(Shipment_ID),
+    foreign key(Warehouse_ID) references Warehouse(Warehouse_ID) ON UPDATE CASCADE
+);
+
+CREATE TABLE Requests(
+    Request_ID text, Request_Date date, Service_Type text,
+    foreign key(Request_ID) references Equipment_Service_Request(Request_ID)
+);
+
+CREATE TABLE Equipment_Service_Request(
+    Customer_ID text, Request_ID text NOT NULL, Equipment_ID text, Description text, Status text,
+    primary key(Review_ID),
+    foreign key(Customer_ID) references Customer(User_ID) ON UPDATE CASCADE,
+    foreign key(Equipment_ID) references Equipment_Main(Serial_Number) ON UPDATE CASCADE
+);
+
+CREATE TABLE Drone_Type(
+    Model text NOT NULL, Manufacturer text NOT NULL, Year int NOT NULL, Weight_Capacity int, Distance Autonomy int, Max_Speed int, Warranty_Expiration date,
+    primary key(Model, Manufacturer, Year)
+);
+
+CREATE TABLE Equipment_Type(
+    Model text NOT NULL, Year int NOT NULL, Manufacturer text NOT NULL, Description text, Type text, Warranty_Expiration date, Weight int, Dimensions text,
+    primary key(Model, Year, Manufacturer)
+);
+
+CREATE TABLE Drone_Main(
+    Warehouse_ID text, Serial_Number text NOT NULL, Order_Number int, Name text, Model text, Status text, Location text, Manufacturer text, Year int, 
+    primary key(Serial_Number), 
+    foreign key(Warehouse_ID) references Warehouse(Warehouse_ID) ON UPDATE CASCADE, 
+    foreign key(Order_Number) references Purchase_Order(Order_Number) ON UPDATE CASCADE,
+    foreign key(Model, Manufacturer, Year) references Drone_Type(Model, Manufacturer, Year)
+);
+
+CREATE TABLE Equipment_Main(
+    Warehouse_ID text, Serial_Number text NOT NULL, Shipment_ID text, Order_Number int, Request_ID text, Model text, Year int, Status text, Location text, Manufacturer text,
+    primary key(Serial_Number),
+    foreign key(Warehouse_ID) references Warehouse(Warehouse_ID) ON UPDATE CASCADE,
+    foreign key(Shipment_ID) references Shipment(Shipment_ID) ON UPDATE CASCADE,
+    foreign key(Order_Number) references Purchase_Order(Order_Number) ON UPDATE CASCADE,
+    foreign key(Request_ID) references Equipment_Service_Request(Request_ID) ON UPDATE CASCADE,
+    foreign key(Model, Year, Manufacturer) references Equipment_Type(Model, Year, Manufacturer)
+);
+
+CREATE TABLE Rental(
+    Rental_ID text NOT NULL, Delivery_Drone_ID text, Pickup_Drone_ID text, Customer_ID text, Equipment_ID text, Checkout_Date date, Due_Date date, Return_Date date, Rental_Fee float,
+    primary key(Rental_ID),
+    foreign key(Delivery_Drone_ID) references Drone_Main(Serial_Number) ON UPDATE CASCADE,
+    foreign key(Pickup_Drone_ID) references Drone_Main(Serial_Number) ON UPDATE CASCADE,
+    foreign key(Customer_ID) references Customer(User_ID) ON UPDATE CASCADE,
+    foreign key(Equipment_ID) references Equipment_Main(Serial_Number) ON UPDATE CASCADE
+);

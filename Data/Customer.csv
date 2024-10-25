@@ -1,0 +1,21 @@
+﻿User_ID,First Name,Last Name,Address,Phone number,Email,Start Date,Status
+U001,Olivia,Bennett,olivia.bennett@email.com,(206) 555-0178,olivia.bennett@email.com,1/15/2020,Active
+U002,Ethan,Carter,4567 River Rd,(512) 555-0325,ethan.carter@email.com,2/20/2021,Inactive
+U003,Mia,Rodriguez,8910 Mountain Ave,(312) 555-0462,mia.rodriguez@email.com,3/5/2021,Active
+U004,Noah,Hughes,2345 Hill Ct,(720) 555-0789,noah.hughes@email.com,4/12/2022,Inactive
+U005,Ava,Price,6789 Sunset Dr,(305) 555-0914,ava.price@email.com,1/1/1999,Inactive
+U006,Liam,Nguyen,1357 Beach St,(212) 555-0146,liam.nguyen@email.com,6/30/2019,Inactive
+U007,Sophia,Rivera,2468 Plaza Way,(415) 555-0284,sophia.rivera@email.com,7/15/2000,Active
+U008,Mason,Cooper,7890 Bridge Ln,(404) 555-0675,mason.cooper@email.com,8/22/2004,Active
+U009,Isabella,Flores,1592 Main Ct,(617) 555-0187,isabella.flores@email.com,9/10/2018,Active
+U010,Lucas,Reed,3571 Market St,(503) 555-0235,lucas.reed@email.com,10/1/2010,Inactive
+U011,Harper,Morgan,8623 Harbor Dr,(713) 555-0399,harper.morgan@email.com,11/5/2008,Active
+U012,Jackson,Kelly,4680 Valley St,(215) 555-0112,jackson.kelly@email.com,8/21/1990,Inactive
+U013,Grace,Price,1254 School Ln,(602) 555-0573,grace.price@email.com,1/28/2024,Active
+U014,Alexander,Wood,7891 College Ave,(214) 555-0491,alexander.wood@email.com,2/15/2023,Active
+U015,Ella,Torres,2460 Stadium St,(615) 555-0358,ella.torres@email.com,3/30/2020,Inactive
+U016,Chloe,Patel,3210 Festival Rd,(213) 555-0678,chloe.patel@email.com,4/5/2021,Active
+U017,Benjamin,Kim,6543 Highway Ct,(310) 555-0912,benjamin.kim@email.com,5/18/2021,Inactive
+U018,Amelia,Thompson,9876 Plaza Ave,(202) 555-0345,amelia.thompson@email.com,6/22/2022,Active
+U019,William,Lewis,1358 Arena Ln,(505) 555-0123,william.lewis@email.com,1/6/2000,Active
+U020,Brandon,Lewis,2334 Course Dr,(433) 555-1234,brandon.lewis@email.com,2/45/2013,Inactive

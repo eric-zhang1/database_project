@@ -1,0 +1,21 @@
+﻿Warehouse ID,Serial_Number,Shipment_ID,Order_Number,Request_ID,Model,Year,Status,Location,Manufacturer
+W001,E001,,,,EarthMover 1500,2018,Available,"2940 Some Lane, Jackson, Mississippi",HeavyMachinery Inc.
+W002,E002,,,,SolarPanel Pro,2022,Under Repair,"4760 Random Street, Meeker, Oklahoma",EcoEnergy
+W003,E003,,,,ProLift 300,2019,Unavailable,"1224 Unreal Avenue, Little Canyon, Texas",LiftTech
+W001,E004,,,,EarthMover 1500,2018,Available,"2940 Some Lane, Jackson, Mississippi",HeavyMachinery Inc.
+W016,E005,,,,SolarPanel Pro,2022,Unavailable,"8623 Cypress Dr, Houston, Texas",EcoEnergy
+W017,E006,,,,ProLift 300,2019,Available,"4680 Chestnut St, Philadelphia, Pennsylvania",LiftTech
+W016,E007,,,,EarthMover 1500,2018,Under Repair,"8623 Cypress Dr, Houston, Texas",HeavyMachinery Inc.
+W016,E008,,,,SolarPanel Pro,2022,Available,"8623 Cypress Dr, Houston, Texas",EcoEnergy
+W001,E009,,,,ProLift 300,2019,Available,"2940 Some Lane, Jackson, Mississippi",LiftTech
+W002,E010,,,,EarthMover 1500,2018,Unavailable,"4760 Random Street, Meeker, Oklahoma",HeavyMachinery Inc.
+W003,E011,,,,EarthMover 1500,2018,Available,"1224 Unreal Avenue, Little Canyon, Texas",HeavyMachinery Inc.
+W001,E012,,,,SolarPanel Pro,2022,Under Repair,"2940 Some Lane, Jackson, Mississippi",EcoEnergy
+W018,E013,,,,HydroPump 250,2021,Available,"1254 Fig St, Phoenix, Arizona",AquaTech
+W009,E014,,,,CargoMaster 700,2020,Unavailable,"2345 Pine Ct, Denver, Colorado",FreightSolutions
+W015,E015,,,,Precision R100,2022,Available,"3571 Ash St, Portland, Oregon",Precision Tools
+W001,E016,,,,EarthMover 1500,2018,Available,"2940 Some Lane, Jackson, Mississippi",HeavyMachinery Inc.
+W002,E017,,,,SolarPanel Pro,2022,Unavailable,"4760 Random Street, Meeker, Oklahoma",EcoEnergy
+W003,E018,,,,HydroPump 250,2021,Available,"1224 Unreal Avenue, Little Canyon, Texas",AquaTech
+W001,E019,,,,CargoMaster 700,2020,Available,"2940 Some Lane, Jackson, Mississippi",FreightSolutions
+W020,E020,,,,Precision R100,2022,Unavailable,"2460 Cherry St, Nashville, Tennessee",Precision Tools
