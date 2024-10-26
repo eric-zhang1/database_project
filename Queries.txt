@@ -1,0 +1,32 @@
+/* Find the type of all Equipment by MANUFACTURER released after YEAR (you choose how to designate the manufacturer, year). */
+SELECT Type FROM EQUIPMENT  
+WHERE MANUFACTURER = ‘Manufacturer’ AND YEAR > ‘Year’;
+
+/* Give all the equipment and the date(s) of their checkout from a single MEMBER (you choose how to designate the member). */
+SELECT Checkout_Date, Equipment_ID 
+FROM CUSTOMER, Rentals, Equipment  
+WHERE CUSTOMER.User_ID = Rentals.Customer ID AND Rentals.Equipment_ID = Equipment.SerialNumber AND CUSTOMER.User_ID = ‘Member_ID’;
+
+/* List all drones by type and its unique identifiers with 2 or less units held by a WAREHOUSE */
+SELECT COUNT(Model), Serial_Number  
+FROM DRONE, WAREHOUSE  
+WHERE DRONE.Warehouse_ID = WAREHOUSE.Warehouse_ID 
+GROUP BY MODEL 
+HAVING COUNT(MODEL) <= 2;
+
+/* Give all the members that live more than 15 miles away from the warehouse who checked out equipment delivered by a particular DRONE (you choose how to designate the drone), as well as the equipment they checked out. */
+SELECT Customer.Customer_ID, Rental.Equipment_ID 
+FROM CUSTOMER, RENTAL  
+WHERE CUSTOMER.UserID = RENTAL.Customer_ID AND Warehouse_Distance > 15 AND Delivery_Drone_ID = 'SERIAL_NUMBER';
+
+/* Find the total number of unique drones that have picked up items checked out on certain Address (you choose how to designate the member address). */
+SELECT COUNT (DISTINCT Pickup_Drone_ID)  
+FROM RENTAL, CUSTOMER 
+WHERE RENTAL.Customer_ID = CUSTOMER.User_ID AND CUSTOMER.Address = 'Address'; 
+
+/* Find the member who has checked out the most equipment and the total number of items they have checked out. */
+SELECT CustomerID, COUNT (Equipment_ID) as Total_Equipment_Rented 
+From RENTAL  
+Group By User_Id 
+ORDER BY Total_Equipment_Rented DESC 
+Limit 1;
