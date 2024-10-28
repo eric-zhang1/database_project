@@ -1,0 +1,13 @@
+.mode csv
+.import Data/Warehouse.csv Warehouse
+.import Data/Customer.csv Customer
+.import Data/Shipment.csv Shipment
+.import Data/Drone_Main.csv Drone_Main
+.import Data/Drone_Type.csv Drone_Type
+.import Data/Equipment_Main.csv Equipment_Main
+.import Data/Equipment_Type.csv Equipment_Type
+.import Data/Equipment_Service_Request.csv Equipment_Service_Request
+.import Data/Purchase_Order.csv Purchase_Order
+.import Data/Rating_Review.csv Rating_Review
+.import Data/Rental.csv Rental
+.import Data/Requests.csv Requests
