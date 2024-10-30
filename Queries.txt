@@ -1,16 +1,17 @@
 /* Find the type of all Equipment by MANUFACTURER released after YEAR (you choose how to designate the manufacturer, year). */
-SELECT Type FROM EQUIPMENT  
+SELECT Type 
+FROM Equipment_Main NATURAL JOIN Equipment_Type
 WHERE MANUFACTURER = ‘Manufacturer’ AND YEAR > ‘Year’;
 
 /* Give all the equipment and the date(s) of their checkout from a single MEMBER (you choose how to designate the member). */
 SELECT Checkout_Date, Equipment_ID 
-FROM CUSTOMER, Rentals, Equipment  
-WHERE CUSTOMER.User_ID = Rentals.Customer ID AND Rentals.Equipment_ID = Equipment.SerialNumber AND CUSTOMER.User_ID = ‘Member_ID’;
+FROM CUSTOMER, Rental, Equipment_Main NATURAL JOIN Equipment_Type
+WHERE CUSTOMER.User_ID = Rental.Customer_ID AND Rental.Equipment_ID = Equipment_Main.Serial_Number AND CUSTOMER.User_ID = 'Member_ID';
 
 /* List all drones by type and its unique identifiers with 2 or less units held by a WAREHOUSE */
-SELECT COUNT(Model), Serial_Number  
-FROM DRONE, WAREHOUSE  
-WHERE DRONE.Warehouse_ID = WAREHOUSE.Warehouse_ID 
+SELECT Model, Serial_Number  
+FROM Drone_Main NATURAL JOIN Drone_Type, WAREHOUSE  
+WHERE DRONE_MAIN.Warehouse_ID = WAREHOUSE.Warehouse_ID 
 GROUP BY MODEL 
 HAVING COUNT(MODEL) <= 2;
 
@@ -30,3 +31,9 @@ From RENTAL
 Group By User_Id 
 ORDER BY Total_Equipment_Rented DESC 
 Limit 1;
+
+/* Find the total quantity of Equipment purchases in the last 6 months by equipment type, provide the total dollar amount for each type and the average weight. */
+SELECT ET.Type, COUNT(EM.Serial_Number), SUM(PO.Value), AVG(EM.Weight)  
+FROM (Equipment_Main AS EM NATURAL JOIN Equipment_Type AS ET) JOIN PURCHASE_ORDER AS PO ON PO.Order_Number = EM.Order_Number  
+WHERE PO.Actual_Arrival_Date >= DATE('now', '-6 months')  
+GROUP BY ET.Type;

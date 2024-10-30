@@ -52,7 +52,7 @@ CREATE TABLE Drone_Main(
     primary key(Serial_Number), 
     foreign key(Warehouse_ID) references Warehouse(Warehouse_ID) ON UPDATE CASCADE, 
     foreign key(Order_Number) references Purchase_Order(Order_Number) ON UPDATE CASCADE,
-    foreign key(Model, Manufacturer, Year) references Drone_Type(Model, Manufacturer, Year)
+    foreign key(Model, Manufacturer, Year) references Drone_Type(Model, Manufacturer, Year) ON UPDATE CASCADE
 );
 
 CREATE TABLE Equipment_Main(
@@ -62,7 +62,7 @@ CREATE TABLE Equipment_Main(
     foreign key(Shipment_ID) references Shipment(Shipment_ID) ON UPDATE CASCADE,
     foreign key(Order_Number) references Purchase_Order(Order_Number) ON UPDATE CASCADE,
     foreign key(Request_ID) references Equipment_Service_Request(Request_ID) ON UPDATE CASCADE,
-    foreign key(Model, Year, Manufacturer) references Equipment_Type(Model, Year, Manufacturer)
+    foreign key(Model, Year, Manufacturer) references Equipment_Type(Model, Year, Manufacturer) ON UPDATE CASCADE
 );
 
 CREATE TABLE Rental(

@@ -1,21 +1,21 @@
-﻿Warehouse_ID,Serial_Number,Order_Number,Name,Model,Status,Location,Manufacturer,Year
-W003,D001,ON012,Skyhawk 1,Falcon X100,Active,"Seattle, WA",AeroTech,2018
-W002,D002,ON003,Skyhawk 2,Eagle Z200,In Maintenance,"Austin, TX",SkyVision,2021
-W012,D003,ON005,Falcon 3,Nimbus V300,Active,"Chicago, IL",Altitude Tech,2022
-W005,D004,ON007,Falcon 4,Storm R600,Active,"Denver, CO",Cloud Dynamics,2023
-W005,D005,ON009,Thunderbolt A,Blackhawk 4000,In Maintenance,"Miami, FL",Falcon Industries,2024
-W012,D006,ON017,Thunderbolt B,Scout Pro 600,Active,"New York, NY",Vantage Robotics,2021
-W003,D007,ON006,Zephyr 1,Falcon X200,Active,"San Francisco, CA",AeroTech,2020
-W020,D008,ON010,Zephyr 2,Cumulus Q600,In Maintenance,"Atlanta, GA",Drone Innovations,2022
-W018,D009,ON009,Horizon 1,Blackhawk 4000,Active,"Boston, MA",Rover Tech,2022
-W017,D010,ON005,Horizon 2,Nimbus V300,Active,"Portland, OR",Guardian Drones,2024
-W001,D011,ON018,Swift 1,Eagle Z300.1,Active,"Houston, TX",SkyVision,2022
-W008,D012,ON007,Swift 2,Storm R600,Active,"Philadelphia, PA",Cloud Dynamics,2021
-W007,D013,ON019,Scout 1,Falcon X300,In Maintenance,"Phoenix, AZ",AeroTech,2018
-W015,D014,ON003,Scout 2,Eagle Z200,Active,"Dallas, TX",SkyVision,2021
-W016,D015,ON005,Guardian 1,Nimbus V300,Active,"Nashville, TN",Altitude Tech,2022
-W016,D016,ON007,Guardian 2,Storm R600,Active,"Miami, FL",Cloud Dynamics,2023
-W003,D017,ON009,Viper 1,Blackhawk 4000,Active,"Orlando, FL",Falcon Industries,2024
-W005,D018,ON008,Viper 2,Scout Pro 500,Active,"Salt Lake City, UT",Vantage Robotics,2021
-W017,D019,ON006,Rover 1,Falcon X200,In Maintenance,"San Diego, CA",AeroTech,2020
-W004,D020,ON010,Rover 2,Cumulus Q600,Active,"Nashville, TN",Drone Innovations,2022
+﻿Warehouse ID,Serial_Number,Shipment_ID,Order_Number,Request_ID,Model,Year,Status,Location,Manufacturer
+W001,E001,S001,ON011,,EarthMover 1500,2018,Available,"2940 Some Lane, Jackson, Mississippi",HeavyMachinery Inc.
+W002,E002,S002,ON013,R004,SolarPanel Pro,2022,Under Repair,"4760 Random Street, Meeker, Oklahoma",EcoEnergy
+W003,E003,S001,ON001,,ProLift 300,2019,Unavailable,"1224 Unreal Avenue, Little Canyon, Texas",LiftTech
+W001,E004,S001,ON020,,EarthMover 1500,2018,Available,"2940 Some Lane, Jackson, Mississippi",HeavyMachinery Inc.
+W016,E005,S002,ON013,,SolarPanel Pro,2022,Unavailable,"8623 Cypress Dr, Houston, Texas",EcoEnergy
+W017,E006,S003,ON001,,ProLift 300,2019,Available,"4680 Chestnut St, Philadelphia, Pennsylvania",LiftTech
+W016,E007,S004,ON020,R009,EarthMover 1500,2018,Under Repair,"8623 Cypress Dr, Houston, Texas",HeavyMachinery Inc.
+W016,E008,S001,ON013,,SolarPanel Pro,2022,Available,"8623 Cypress Dr, Houston, Texas",EcoEnergy
+W001,E009,S001,ON001,,ProLift 300,2019,Available,"2940 Some Lane, Jackson, Mississippi",LiftTech
+W002,E010,S003,ON020,R001,EarthMover 1500,2018,Unavailable,"4760 Random Street, Meeker, Oklahoma",HeavyMachinery Inc.
+W003,E011,S002,ON020,,EarthMover 1500,2018,Available,"1224 Unreal Avenue, Little Canyon, Texas",HeavyMachinery Inc.
+W001,E012,S005,ON013,R006,SolarPanel Pro,2022,Under Repair,"2940 Some Lane, Jackson, Mississippi",EcoEnergy
+W018,E013,S010,ON014,,HydroPump 250,2021,Available,"1254 Fig St, Phoenix, Arizona",AquaTech
+W009,E014,S008,ON015,,CargoMaster 700,2020,Unavailable,"2345 Pine Ct, Denver, Colorado",FreightSolutions
+W015,E015,S001,ON016,,Precision R100,2022,Available,"3571 Ash St, Portland, Oregon",Precision Tools
+W001,E016,S007,ON011,,EarthMover 1500,2018,Available,"2940 Some Lane, Jackson, Mississippi",HeavyMachinery Inc.
+W002,E017,S004,ON013,,SolarPanel Pro,2022,Unavailable,"4760 Random Street, Meeker, Oklahoma",EcoEnergy
+W003,E018,S002,ON014,,HydroPump 250,2021,Available,"1224 Unreal Avenue, Little Canyon, Texas",AquaTech
+W001,E019,S010,ON015,,CargoMaster 700,2020,Available,"2940 Some Lane, Jackson, Mississippi",FreightSolutions
+W020,E020,S010,ON016,,Precision R100,2022,Unavailable,"2460 Cherry St, Nashville, Tennessee",Precision Tools

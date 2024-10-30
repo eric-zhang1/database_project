@@ -9,3 +9,4 @@ U010,R007,E019,Equipment is jammed and is unable to move product ,Completed
 U011,R008,E013,"Equipment is not pumping water at an effective rate, it's too slow",Completed 
 U001,R009,E006,Machine is not able to lift items above 10 ft. Should be able to do 25 ft,Completed 
 U002,R010,E009,Machine cable severed after trying to lift heavy pallet ,Completed 
+U002,R011,E002,Wire snapped from machine.,In-Progress
