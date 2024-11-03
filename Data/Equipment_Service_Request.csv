@@ -10,3 +10,12 @@ U011,R008,E013,"Equipment is not pumping water at an effective rate, it's too sl
 U001,R009,E006,Machine is not able to lift items above 10 ft. Should be able to do 25 ft,Completed 
 U002,R010,E009,Machine cable severed after trying to lift heavy pallet ,Completed 
 U002,R011,E002,Wire snapped from machine.,In-Progress
+U009,R012,E014,The machine arrived completely broken,Completed 
+U009,R013,E014,The machine was still broken after being returned,Completed 
+U018,R014,E005,The machine was completely broken,Completed 
+U018,R015,E020,The measurements are completely off,Completed 
+U014,R016,E012,The machine broke after lifting a heavy object,Completed 
+U009,R017,E014,Machine broke again,In Progress
+U006,R018,E017,Screws are too rusty and the machine is stuck,Requested
+U020,R019,E003,The paint on the machine is chipped and is proventing functionality,Requested
+U012,R020,E020,The machine short circuited,Completed 
