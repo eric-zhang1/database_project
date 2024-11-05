@@ -32,7 +32,7 @@ CREATE TABLE Requests(
 
 CREATE TABLE Equipment_Service_Request(
     Customer_ID text, Request_ID text NOT NULL, Equipment_ID text, Description text, Status text,
-    primary key(Review_ID),
+    primary key(Request_ID),
     foreign key(Customer_ID) references Customer(User_ID) ON UPDATE CASCADE,
     foreign key(Equipment_ID) references Equipment_Main(Serial_Number) ON UPDATE CASCADE
 );
