@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Main {
 
-    private static String DATABASE = "Database.db";
+    private static final String DATABASE = "Database.db";
     public static Connection conn = null;
 
     public static Connection initializeDatabase(String path) {
@@ -30,10 +30,10 @@ public class Main {
 
     public static void main(String[] args) {
         conn = initializeDatabase(DATABASE);
-        Menu menu = new Menu();  // Instantiate the application
+        Menu menu = new Menu(conn);  // Instantiate the application
         while (true) {
             int choice = menu.getNextOption();  // Get the option wanted from the customer
-            if (choice == 13) { // Exit loop
+            if (choice == 19) { // Exit loop
                 System.out.println("Exiting program");
                 break;
             } else {

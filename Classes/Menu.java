@@ -2,6 +2,7 @@ package Classes;
 
 import java.util.HashMap;
 import java.util.Scanner;
+import java.sql.Connection;
 
 /**
  * Main class for the Equipment Rental Application
@@ -14,26 +15,33 @@ public class Menu {
         public void invoke();
     }
 
-    private HashMap<String, Customer> customers = new HashMap<>();  // List to store customer records
-    private HashMap<String, Warehouse> warehouses = new HashMap<>();  // List to store warehouse records
-    private Scanner scanner = new Scanner(System.in);  // Scanner to read user input
+    private final HashMap<String, Customer> customers = new HashMap<>();  // List to store customer records
+    private final HashMap<String, Warehouse> warehouses = new HashMap<>();  // List to store warehouse records
+    private final Scanner scanner = new Scanner(System.in);  // Scanner to read user input
+    public Connection conn = null;
 
     /*
      * Initialize methodList for ease of calling menu methods
      */
-    private MenuOption[] menuList = new MenuOption[] {
-        new MenuOption() {public void invoke() {addCustomer(); } },
-        new MenuOption() {public void invoke() {editCustomer(); } },
-        new MenuOption() {public void invoke() {deleteCustomer(); } },
-        new MenuOption() {public void invoke() {searchCustomer(); } },
-        new MenuOption() {public void invoke() {addWarehouse(); } },
-        new MenuOption() {public void invoke() {editWarehouse(); } },
-        new MenuOption() {public void invoke() {deleteWarehouse(); } },
-        new MenuOption() {public void invoke() {searchWarehouse(); } },
-        new MenuOption() {public void invoke() {rentEquipment(); } },
-        new MenuOption() {public void invoke() {returnEquipment(); } },
-        new MenuOption() {public void invoke() {deliverEquipment(); } },
-        new MenuOption() {public void invoke() {pickupEquipment(); } }
+    private final MenuOption[] menuList = new MenuOption[] {
+        new MenuOption() {@Override public void invoke() {addCustomer(); } },
+        new MenuOption() {@Override public void invoke() {editCustomer(); } },
+        new MenuOption() {@Override public void invoke() {deleteCustomer(); } },
+        new MenuOption() {@Override public void invoke() {searchCustomer(); } },
+        new MenuOption() {@Override public void invoke() {addWarehouse(); } },
+        new MenuOption() {@Override public void invoke() {editWarehouse(); } },
+        new MenuOption() {@Override public void invoke() {deleteWarehouse(); } },
+        new MenuOption() {@Override public void invoke() {searchWarehouse(); } },
+        new MenuOption() {@Override public void invoke() {rentEquipment(); } },
+        new MenuOption() {@Override public void invoke() {returnEquipment(); } },
+        new MenuOption() {@Override public void invoke() {deliverEquipment(); } },
+        new MenuOption() {@Override public void invoke() {pickupEquipment(); } },
+        new MenuOption() {@Override public void invoke() {rentCheckouts(); } },
+        new MenuOption() {@Override public void invoke() {popularItem(); } },
+        new MenuOption() {@Override public void invoke() {popularManufacturer(); } },
+        new MenuOption() {@Override public void invoke() {popularDrone(); } },
+        new MenuOption() {@Override public void invoke() {itemsCheckedOut(); } },
+        new MenuOption() {@Override public void invoke() {equipmentByType(); } }
     };
 
     /*
@@ -41,16 +49,8 @@ public class Menu {
      * 
      * For now, adds dummy customers and warehouses. In the future, will connect the database to the main menu
      */
-    public Menu() {
-        // Adding dummy customers
-        customers.put("C001", new Customer("C001", "Alice", "Johnson", "123 Maple St", "555-1234", "alice@example.com", "2023-01-15", "Active"));
-        customers.put("C002", new Customer("C002", "Bob", "Smith", "456 Oak St", "555-5678", "bob@example.com", "2023-02-01", "Inactive"));
-        customers.put("C003", new Customer("C003", "Charlie", "Brown", "789 Pine St", "555-9012", "charlie@example.com", "2023-03-20", "Active"));
-
-        // Adding dummy warehouses
-        warehouses.put("W001", new Warehouse("W001", "New York", "789 Broadway", "555-9876", "John Manager", 500, 20));
-        warehouses.put("W002", new Warehouse("W002", "Los Angeles", "456 Hollywood Blvd", "555-4321", "Jane Manager", 1000, 50));
-        warehouses.put("W003", new Warehouse("W003", "Chicago", "123 Michigan Ave", "555-1111", "Jake Manager", 750, 30));
+    public Menu(Connection conn) {
+        this.conn = conn;
     }
 
     public void runMenuOption(int choice) {
@@ -75,7 +75,13 @@ public class Menu {
         System.out.println("10. Return Equipment");
         System.out.println("11. Schedule Equipment Delivery");
         System.out.println("12. Schedule Equipment Pickup");
-        System.out.println("13. Exit");
+        System.out.println("13. Find Rented Equipments By User");
+        System.out.println("14. Find Popular Item");
+        System.out.println("15. Find Popular Manufacturer");
+        System.out.println("16. Find Popular Drone");
+        System.out.println("17. Find Item Number From Most Active Member");
+        System.out.println("18. Equipment By Type");
+        System.out.println("19. Exit");
         System.out.print("Enter your choice: ");
 
         int choice = 0;
@@ -84,10 +90,10 @@ public class Menu {
             try {
                 choice = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println("Please enter a number between 1-13");
+                System.out.println("Please enter a number between 1-19");
                 choice = 0;
             }
-        } while (!(choice >= 1 && choice <= 13));
+        } while (!(choice >= 1 && choice <= 19));
 
         return choice;
     }
@@ -134,9 +140,8 @@ public class Menu {
         System.out.print("Enter Status: ");
         status = scanner.nextLine();
 
-        Customer customer = new Customer(userId, firstName, lastName, address, phone, email, startDate, status);
-        customers.put(userId, customer);  // Add customer to the list
-        System.out.println("Customer added successfully: " + customer);
+        // TODO: Add customer to the list
+        System.out.println("Customer added successfully");
     }
 
     /**
@@ -144,52 +149,46 @@ public class Menu {
      */
     private void editCustomer() {
         String userId, firstName, lastName, address, phone, email, status;
-        Customer customer;
         
         System.out.print("Enter User ID of customer to edit: ");
         userId = scanner.nextLine();
-        if (customers.containsKey(userId)) { // Only add if customer does not already exist
-            customer = customers.get(userId);
-        } else {
-            System.out.println("Customer does not exist.");
-            return;
-        } 
+        // TODO: Check if the customer exists. If not, return
 
         // Ask for new information
         System.out.print("Enter new First Name (or press Enter to keep current): ");
         firstName = scanner.nextLine();
         if (!firstName.isEmpty()) {
-            customer.setFirstName(firstName);
+            // TODO: Edit field
         }
 
         System.out.print("Enter new Last Name (or press Enter to keep current): ");
         lastName = scanner.nextLine();
         if (!lastName.isEmpty()) {
-            customer.setLastName(lastName);
+            // TODO: Edit field
         }
 
         System.out.print("Enter new Address (or press Enter to keep current): ");
         address = scanner.nextLine();
         if (!address.isEmpty()) {
-            customer.setAddress(address);
+            // TODO: Edit field
         }
 
         System.out.print("Enter new Phone (or press Enter to keep current): ");
         phone = scanner.nextLine();
         if (!phone.isEmpty()) {
-            customer.setPhone(phone);
+            // TODO: Edit field
         }
 
         System.out.print("Enter new Email (or press Enter to keep current): ");
         email = scanner.nextLine();
         if (!email.isEmpty()) {
-            customer.setEmail(email);
+            // TODO: Edit field
         }
 
         System.out.print("Enter new Status (or press Enter to keep current): ");
         status = scanner.nextLine();
         if (!status.isEmpty()) {
-            customer.setStatus(status);
+            // TODO: Edit field
         }
 
         System.out.println("Customer information updated successfully.");
@@ -201,13 +200,18 @@ public class Menu {
     private void deleteCustomer() {
         System.out.print("Enter User ID of customer to delete: ");
         String userId = scanner.nextLine();
+        // TODO: Implement
 
-        if (customers.remove(userId) != null) {
+        /*
+        if ( Customer exists ) {
             System.out.println("Customer deleted successfully.");
         } else {
             // If no customer was found with the provided ID
             System.out.println("Customer not found.");
         }
+        */
+        // Remove later
+        System.out.println("Customer deleted successfully.");
     }
 
     /**
@@ -217,13 +221,18 @@ public class Menu {
         System.out.print("Enter User ID of customer to search: ");
         String userId = scanner.nextLine();
 
-        Customer customer = customers.get(userId);
-        if (customer != null) {
+        // TODO: Implement search
+        /* 
+        if (//Customer exists) {
             System.out.println("Customer found: " + customer);
         } else {
             // If no customer was found with the provided ID
             System.out.println("Customer not found.");
         }
+        */
+
+        // Remove later
+        System.out.println("Customer found");
     }
 
     // --- Warehouse Management ---
@@ -422,5 +431,52 @@ public class Menu {
 
         customer.setStatus("Active");
         System.out.println("Equipment pickup scheduled by User: " + userId);
+    }
+
+    // --- Report Placeholders ---
+
+    /**
+     * Placeholder for renting checkouts
+     */
+    private void rentCheckouts() {
+        System.out.println("Enter member ID:");
+        String userID = scanner.nextLine();
+
+        System.out.println("Returning number of equipments rented by " + userID);
+    }
+
+    /**
+     * Placeholder for Popular Item
+     */
+    private void popularItem() {
+        System.out.println("The most popular item is [something]");
+    }
+
+    /**
+     * Placeholder for popular manufacturer
+     */
+    private void popularManufacturer() {
+        System.out.println("The most popular manufacturer is [someone]");
+    }
+
+    /**
+     * Placeholder for popular drone
+     */
+    private void popularDrone() {
+        System.out.println("The most popular drone is [drone]");
+    }
+
+    /**
+     * Placeholder for items checked out
+     */
+    private void itemsCheckedOut() {
+        System.out.println("The member with the most items checkout is [someone] at [#] items");
+    }
+    
+    /**
+     * Placeholder for equipment by type
+     */
+    private void equipmentByType() {
+        System.out.println("Here is the description of the equipment by type released before YEAR");
     }
 }

@@ -1,7 +1,7 @@
 package Classes;
 
 public class Customer {
-	private String userId;
+	private final String userId;
     private String firstName;
     private String lastName;
     private String address;
