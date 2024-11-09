@@ -372,13 +372,13 @@ public class Menu {
         // In future checkpoints, implement the equipment rental process here
         System.out.print("Enter User ID of customer to rent equipment: ");
         String userId = scanner.nextLine();
-        Customer customer = customers.get(userId);
+        /*
         if (customer == null) {
             System.out.println("Customer not found.");
             return;
         }
+        */
 
-        customer.setStatus("Active");
         System.out.println("Equipment rented by User: " + userId);
     }
 
@@ -389,13 +389,13 @@ public class Menu {
         // In future checkpoints, implement the equipment return process here
         System.out.print("Enter User ID of customer to return equipment: ");
         String userId = scanner.nextLine();
-        Customer customer = customers.get(userId);
+        /*
         if (customer == null) {
             System.out.println("Customer not found.");
             return;
         }
+        */
 
-        customer.setStatus("Active");
         System.out.println("Equipment returned by User: " + userId);
     }
 
@@ -406,13 +406,13 @@ public class Menu {
         // In future checkpoints, implement the equipment delivery process here
         System.out.print("Enter User ID of customer to deliver equipment: ");
         String userId = scanner.nextLine();
-        Customer customer = customers.get(userId);
+        /*
         if (customer == null) {
             System.out.println("Customer not found.");
             return;
         }
+        */
 
-        customer.setStatus("Active");
         System.out.println("Equipment delivery scheduled by User: " + userId);
     }
 
@@ -423,13 +423,13 @@ public class Menu {
         // In future checkpoints, implement the equipment pickup process here
         System.out.print("Enter User ID of customer to pickup equipment: ");
         String userId = scanner.nextLine();
-        Customer customer = customers.get(userId);
+        /*
         if (customer == null) {
             System.out.println("Customer not found.");
             return;
         }
+        */
 
-        customer.setStatus("Active");
         System.out.println("Equipment pickup scheduled by User: " + userId);
     }
 
