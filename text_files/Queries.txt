@@ -1,7 +1,7 @@
 /* Find the type of all Equipment by MANUFACTURER released after YEAR (you choose how to designate the manufacturer, year). */
 SELECT Type 
 FROM Equipment_Main NATURAL JOIN Equipment_Type
-WHERE MANUFACTURER = ‘Manufacturer’ AND YEAR > ‘Year’;
+WHERE MANUFACTURER = 'Manufacturer' AND YEAR > 'Year';
 
 /* Give all the equipment and the date(s) of their checkout from a single MEMBER (you choose how to designate the member). */
 SELECT Checkout_Date, Equipment_ID 
@@ -26,9 +26,9 @@ FROM RENTAL, CUSTOMER
 WHERE RENTAL.Customer_ID = CUSTOMER.User_ID AND CUSTOMER.Address = 'Address'; 
 
 /* Find the member who has checked out the most equipment and the total number of items they have checked out. */
-SELECT CustomerID, COUNT (Equipment_ID) as Total_Equipment_Rented 
+SELECT Customer_ID, COUNT (Equipment_ID) as Total_Equipment_Rented 
 From RENTAL  
-Group By User_Id 
+Group By Customer_ID
 ORDER BY Total_Equipment_Rented DESC 
 Limit 1;
 

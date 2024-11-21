@@ -6,7 +6,7 @@ WHERE DRONE_MAIN.Order_Number = 'Specified order number';
 /* Gather a list of customers who have placed more than 3 service requests */
 SELECT FName, LName 
 FROM CUSTOMER JOIN EQUIPMENT_SERVICE_REQUEST ON CUSTOMER.User_ID = EQUIPMENT_SERVICE_REQUEST.Customer_ID 
-GROUP BY CUSTOMER.Customer_ID, CUSTOMER.FName, CUSTOMER.LName 
+GROUP BY CUSTOMER.User_ID, CUSTOMER.FName, CUSTOMER.LName 
 HAVING COUNT(EQUIPMENT_SERVICE_REQUEST.Request_ID) > 3;  
 
 /* Find the warehouse with the highest amount of stored drones  */
