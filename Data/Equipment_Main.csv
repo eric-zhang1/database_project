@@ -1,5 +1,4 @@
-﻿Warehouse ID,Serial_Number,Shipment_ID,Order_Number,Request_ID,Model,Year,Status,Location,Manufacturer
-W001,E001,S001,ON011,,EarthMover 1500,2018,Available,"2940 Some Lane, Jackson, Mississippi",HeavyMachinery Inc.
+﻿W001,E001,S001,ON011,,EarthMover 1500,2018,Available,"2940 Some Lane, Jackson, Mississippi",HeavyMachinery Inc.
 W002,E002,S002,ON013,R004,SolarPanel Pro,2022,Under Repair,"4760 Random Street, Meeker, Oklahoma",EcoEnergy
 W003,E003,S001,ON001,,ProLift 300,2019,Unavailable,"1224 Unreal Avenue, Little Canyon, Texas",LiftTech
 W001,E004,S001,ON020,,EarthMover 1500,2018,Available,"2940 Some Lane, Jackson, Mississippi",HeavyMachinery Inc.

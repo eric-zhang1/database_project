@@ -1,5 +1,4 @@
-﻿Order_Number,Element_Type,Quantity,Value,Estimated_Arrival_Date,Actual_Arrival_Rate
-ON001,ProLift 300,10,150000,1/10/2024,1/8/2024
+﻿ON001,ProLift 300,10,150000,1/10/2024,1/8/2024
 ON002,GigaRig 5000,5,250000,12/9/2024,
 ON003,Eagle Z200,7,14000,1/23/2024,2/23/2024
 ON004,Eagle Z300,3,900,3/8/2024,3/8/2024
