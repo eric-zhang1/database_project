@@ -1,8 +1,12 @@
 package Classes;
 
+import com.sun.jdi.connect.spi.ClosedConnectionException;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Main class for the Equipment Rental Application
@@ -108,11 +112,14 @@ public class Menu {
      * Add a new customer to the system.
      */
     private void addCustomer() {
+        String insertCustSQLStmt = "INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status)" + 
+                                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+        PreparedStatement insertCustomer;
         String userId, firstName, lastName, address, phone, email, startDate, status;
         while (true) {
             System.out.print("Enter User ID: ");
             userId = scanner.nextLine();
-            if (customers.containsKey(userId)) { // If customer already exists, ask again
+            if (customerExists(userId)) { // If customer already exists, ask again
                 System.out.println("Customer already exists. Try again");
             } else {
                 break;
@@ -140,55 +147,130 @@ public class Menu {
         System.out.print("Enter Status: ");
         status = scanner.nextLine();
 
-        // TODO: Add customer to the list
+        try {
+            /*
+             * INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) 
+             * VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+             */
+            insertCustomer = conn.prepareStatement(insertCustSQLStmt);
+            insertCustomer.setString(1, userId);
+            insertCustomer.setString(2, firstName);
+            insertCustomer.setString(3, lastName);
+            insertCustomer.setString(4, address);
+            insertCustomer.setString(5, phone);
+            insertCustomer.setString(6, email);
+            insertCustomer.setString(7, startDate);
+            insertCustomer.setString(8, status);
+            insertCustomer.executeUpdate();
+
+            insertCustomer.close();
+        } catch (SQLException ex) {
+            System.err.println("Insert Customer Failed. Error code: " + ex.toString());
+            System.exit(0);
+        }
+
         System.out.println("Customer added successfully");
+    }
+
+    /**
+     * Method for updating a single attribute of customer
+     */
+    private void updateCustomerAttribute(String query, String userID, String attrVal) throws SQLException {
+        /*
+         * UPDATE Customer
+         * SET <attribute> = ?
+         * WHERE User_ID = ?
+         */
+        PreparedStatement updateCustomer;
+
+        updateCustomer = conn.prepareStatement(query);
+        updateCustomer.setString(1, attrVal);
+        updateCustomer.setString(2, userID);
+        updateCustomer.executeUpdate();
+
+        updateCustomer.close();
     }
 
     /**
      * Edit an existing customer's information.
      */
     private void editCustomer() {
+        String editCustomerAttr;
         String userId, firstName, lastName, address, phone, email, status;
         
         System.out.print("Enter User ID of customer to edit: ");
         userId = scanner.nextLine();
-        // TODO: Check if the customer exists. If not, return
+        // Check if the customer exists, if not return.
+        if (!customerExists(userId)) {
+            System.out.println("Customer with User ID: " + userId + " does not exist.");
+            return;
+        }
 
         // Ask for new information
         System.out.print("Enter new First Name (or press Enter to keep current): ");
         firstName = scanner.nextLine();
-        if (!firstName.isEmpty()) {
-            // TODO: Edit field
-        }
 
         System.out.print("Enter new Last Name (or press Enter to keep current): ");
         lastName = scanner.nextLine();
-        if (!lastName.isEmpty()) {
-            // TODO: Edit field
-        }
 
         System.out.print("Enter new Address (or press Enter to keep current): ");
         address = scanner.nextLine();
-        if (!address.isEmpty()) {
-            // TODO: Edit field
-        }
 
         System.out.print("Enter new Phone (or press Enter to keep current): ");
         phone = scanner.nextLine();
-        if (!phone.isEmpty()) {
-            // TODO: Edit field
-        }
 
         System.out.print("Enter new Email (or press Enter to keep current): ");
         email = scanner.nextLine();
-        if (!email.isEmpty()) {
-            // TODO: Edit field
-        }
 
         System.out.print("Enter new Status (or press Enter to keep current): ");
         status = scanner.nextLine();
-        if (!status.isEmpty()) {
-            // TODO: Edit field
+
+        // Sets autocommit to false to ensure that the commits are only committed together
+
+        try {
+            conn.setAutoCommit(false);
+
+            if (!firstName.isEmpty()) {
+                editCustomerAttr = "UPDATE Customer SET Fname = ? WHERE User_ID = ?;";
+                updateCustomerAttribute(editCustomerAttr, userId, firstName);
+            }
+            if (!lastName.isEmpty()) {
+                editCustomerAttr = "UPDATE Customer SET Lname = ? WHERE User_ID = ?;";
+                updateCustomerAttribute(editCustomerAttr, userId, lastName);
+            }
+            if (!address.isEmpty()) {
+                editCustomerAttr = "UPDATE Customer SET Address = ? WHERE User_ID = ?;";
+                updateCustomerAttribute(editCustomerAttr, userId, address);
+            }
+            if (!phone.isEmpty()) {
+                editCustomerAttr = "UPDATE Customer SET Phone = ? WHERE User_ID = ?;";
+                updateCustomerAttribute(editCustomerAttr, userId, phone);
+            }
+            if (!email.isEmpty()) {
+                editCustomerAttr = "UPDATE Customer SET Email = ? WHERE User_ID = ?;";
+                updateCustomerAttribute(editCustomerAttr, userId, email);
+            }
+            if (!status.isEmpty()) {
+                editCustomerAttr = "UPDATE Customer SET Status = ? WHERE User_ID = ?;";
+                updateCustomerAttribute(editCustomerAttr, userId, status);
+            }
+            // Commit all of the above changes to the database
+            conn.commit();
+            // Reset autocommit to true
+            conn.setAutoCommit(true);
+        } catch (SQLException ex) {
+            if (conn != null) {
+                try {
+                    System.err.println("Attempting to rollback customer update");
+                    conn.rollback();
+                    System.err.println("Rollback successful");
+                } catch (SQLException ex2) {
+                    System.err.println("Unable to rollback");
+                    System.exit(0);
+                }
+            }
+            System.err.println("Update Customer Failed. Error code: " + ex.toString());
+            System.exit(0);
         }
 
         System.out.println("Customer information updated successfully.");
@@ -198,41 +280,99 @@ public class Menu {
      * Delete a customer from the system.
      */
     private void deleteCustomer() {
+        String queryString = "DELETE FROM Customer WHERE User_ID = ?;";
+        PreparedStatement deleteCustomer;
+
         System.out.print("Enter User ID of customer to delete: ");
         String userId = scanner.nextLine();
-        // TODO: Implement
 
-        /*
-        if ( Customer exists ) {
-            System.out.println("Customer deleted successfully.");
-        } else {
+        if (!customerExists(userId)) {
             // If no customer was found with the provided ID
             System.out.println("Customer not found.");
         }
-        */
-        // Remove later
+
+        try {
+            /*
+             * DELETE FROM Customer 
+             * WHERE User_ID = ?;
+             */
+            deleteCustomer = conn.prepareStatement(queryString);
+            deleteCustomer.setString(1, userId);
+            deleteCustomer.executeUpdate();
+
+            deleteCustomer.close();
+        } catch (SQLException ex) {
+            System.err.println("Delete Customer Failed. Error Message: " + ex.toString());
+        }
+
         System.out.println("Customer deleted successfully.");
+    }
+
+    /**
+     * Private support fuction to return the customers in the database
+     */
+    private boolean customerExists(String userID) {
+        String queryString = "SELECT * FROM Customer WHERE User_ID = ?;";
+        ResultSet rSet;
+        PreparedStatement getCustomer;
+        try {
+            getCustomer = conn.prepareStatement(queryString);
+            getCustomer.setString(1, userID);
+            rSet = getCustomer.executeQuery();
+            // Courtesy of Seifer from https://stackoverflow.com/questions/867194/java-resultset-how-to-check-if-there-are-any-results
+            // If the rSet's cursor is not before the first record immidiately upon return, there are no rows in the ResultSet
+            return rSet.isBeforeFirst();
+        } catch (SQLException e) {
+            System.err.println("Error finding customer");
+            System.exit(0);
+        }
+        // Defaults to does not exist
+        return false;
     }
 
     /**
      * Search for a customer by user ID.
      */
     private void searchCustomer() {
+        String queryString = "SELECT * FROM Customer WHERE User_ID = ?;";
+
         System.out.print("Enter User ID of customer to search: ");
-        String userId = scanner.nextLine();
+        String userID = scanner.nextLine();
+        
 
-        // TODO: Implement search
-        /* 
-        if (//Customer exists) {
-            System.out.println("Customer found: " + customer);
-        } else {
-            // If no customer was found with the provided ID
-            System.out.println("Customer not found.");
+        ResultSet rSet;
+        PreparedStatement getCustomer;
+        try {
+            getCustomer = conn.prepareStatement(queryString);
+            getCustomer.setString(1, userID);
+            rSet = getCustomer.executeQuery();
+            // Courtesy of Seifer from https://stackoverflow.com/questions/867194/java-resultset-how-to-check-if-there-are-any-results
+            // If the rSet's cursor is not before the first record immidiately upon return, there are no rows in the ResultSet
+            if (rSet.isBeforeFirst()) {    // Customer exists
+                rSet.next();    // Set the first row to be the current row
+                assert userID.equals(rSet.getString("User_ID")) : "Returned incorrect customer";
+
+                System.out.println("Customer found: ");
+                String Fname = rSet.getString("Fname");
+                String Lname = rSet.getString("Lname");
+                String Address = rSet.getString("Address");
+                String Phone = rSet.getString("Phone");
+                String Email = rSet.getString("Email");
+                String Start_Date = rSet.getString("Start_Date");
+                String Status = rSet.getString("Status");
+                System.out.println("Name: " + Fname + " " + Lname);
+                System.out.println("Address: " + Address);
+                System.out.println("Phone Number: " + Phone);
+                System.out.println("Email: " + Email);
+                System.out.println("Start Date: " + Start_Date);
+                System.out.println("Status" + Status);
+            } else {
+                System.out.println("Customer with User ID: " + userID + " does not exist.");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error finding customer");
+            System.exit(0);
         }
-        */
-
-        // Remove later
-        System.out.println("Customer found");
     }
 
     // --- Warehouse Management ---
