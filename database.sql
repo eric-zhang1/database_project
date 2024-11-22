@@ -11,7 +11,6 @@ CREATE TABLE IF NOT EXISTS Customer(
     User_ID text NOT NULL, Fname text, Lname text, Address text, Phone text, Email text, Start_Date text, Status text, 
     primary key(User_ID)
 );
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('User_ID', 'First Name', 'Last Name', 'Address', 'Phone number', 'Email', 'Start Date', 'Status');
 INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U001', 'Olivia', 'Bennett', '5828 Knight Dr', '(206) 555-0178', 'olivia.bennett@email.com', '1/15/2020', 'Active');
 INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U002', 'Ethan', 'Carter', '4567 River Rd', '(512) 555-0325', 'ethan.carter@email.com', '2/20/2021', 'Inactive');
 INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U003', 'Mia', 'Rodriguez', '8910 Mountain Ave', '(312) 555-0462', 'mia.rodriguez@email.com', '3/5/2021', 'Active');
@@ -35,7 +34,6 @@ INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, 
 
 -- Table: Drone_Main
 CREATE TABLE IF NOT EXISTS Drone_Main (Warehouse_ID text, Serial_Number text NOT NULL, Order_Number int, Name text, Model text, Status text, Location text, Manufacturer text, Year int, PRIMARY KEY (Serial_Number));
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('Warehouse_ID', 'Serial_Number', 'Order_Number', 'Name', 'Model', 'Status', 'Location', 'Manufacturer', 'Year');
 INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W003', 'D001', '', 'Skyhawk 1', 'Falcon X100', 'Active', 'Seattle, WA', 'AeroTech', 2018);
 INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W002', 'D002', '', 'Skyhawk 2', 'Eagle Z200', 'In Maintenance', 'Austin, TX', 'SkyVision', 2021);
 INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W012', 'D003', '', 'Falcon 3', 'Nimbus V300', 'Active', 'Chicago, IL', 'Altitude Tech', 2022);
@@ -59,7 +57,6 @@ INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, 
 
 -- Table: Drone_Type
 CREATE TABLE IF NOT EXISTS Drone_Type (Model text NOT NULL, Manufacturer text NOT NULL, Year int NOT NULL, Weight_Capacity int, Distance Autonomy int, Max_Speed int, Warranty_Expiration date);
-INSERT INTO Drone_Type (Model, Manufacturer, Year, Weight_Capacity, Distance, Max_Speed, Warranty_Expiration) VALUES ('Model', 'Manufacturer', 'Year', 'Weight Capacity', 'Distance_Autonomy', 'Max_Speed', 'Warranty_Expiration');
 INSERT INTO Drone_Type (Model, Manufacturer, Year, Weight_Capacity, Distance, Max_Speed, Warranty_Expiration) VALUES ('Falcon X100', 'AeroTech', 2018, 10, 20, 30, '5/10/2024');
 INSERT INTO Drone_Type (Model, Manufacturer, Year, Weight_Capacity, Distance, Max_Speed, Warranty_Expiration) VALUES ('Falcon X200', 'AeroTech', 2020, 12, 25, 35, '7/15/2025');
 INSERT INTO Drone_Type (Model, Manufacturer, Year, Weight_Capacity, Distance, Max_Speed, Warranty_Expiration) VALUES ('Eagle Z200', 'SkyVision', 2021, 15, 30, 40, '11/20/2024');
@@ -83,7 +80,6 @@ INSERT INTO Drone_Type (Model, Manufacturer, Year, Weight_Capacity, Distance, Ma
 
 -- Table: Equipment_Main
 CREATE TABLE IF NOT EXISTS Equipment_Main (Warehouse_ID text, Serial_Number text NOT NULL, Shipment_ID text, Order_Number int, Request_ID text, Model text, Year int, Status text, Location text, Manufacturer text, PRIMARY KEY (Serial_Number));
-INSERT INTO Equipment_Main (Warehouse_ID, Serial_Number, Shipment_ID, Order_Number, Request_ID, Model, Year, Status, Location, Manufacturer) VALUES ('Warehouse ID', 'Serial_Number', 'Shipment_ID', 'Order_Number', 'Request_ID', 'Model', 'Year', 'Status', 'Location', 'Manufacturer');
 INSERT INTO Equipment_Main (Warehouse_ID, Serial_Number, Shipment_ID, Order_Number, Request_ID, Model, Year, Status, Location, Manufacturer) VALUES ('W001', 'E001', 'S001', 'ON011', '', 'EarthMover 1500', 2018, 'Available', '2940 Some Lane, Jackson, Mississippi', 'HeavyMachinery Inc.');
 INSERT INTO Equipment_Main (Warehouse_ID, Serial_Number, Shipment_ID, Order_Number, Request_ID, Model, Year, Status, Location, Manufacturer) VALUES ('W002', 'E002', 'S002', 'ON013', 'R004', 'SolarPanel Pro', 2022, 'Under Repair', '4760 Random Street, Meeker, Oklahoma', 'EcoEnergy');
 INSERT INTO Equipment_Main (Warehouse_ID, Serial_Number, Shipment_ID, Order_Number, Request_ID, Model, Year, Status, Location, Manufacturer) VALUES ('W003', 'E003', 'S001', 'ON001', '', 'ProLift 300', 2019, 'Unavailable', '1224 Unreal Avenue, Little Canyon, Texas', 'LiftTech');
@@ -107,7 +103,6 @@ INSERT INTO Equipment_Main (Warehouse_ID, Serial_Number, Shipment_ID, Order_Numb
 
 -- Table: Equipment_Service_Request
 CREATE TABLE IF NOT EXISTS Equipment_Service_Request (Customer_ID text, Request_ID text NOT NULL, Equipment_ID text, Description text, Status text, PRIMARY KEY (Request_ID));
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('Customer_ID', 'Request_ID', 'Equipment_ID', 'Description', ' Status ');
 INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U002', 'R001', 'E001', 'Machine stopped working, could not restart it ', 'Completed ');
 INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U003', 'R002', 'E010', 'Machine failed after trying to move heavy load ', 'Requested');
 INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U014', 'R003', 'E003', 'Machine is taking too long to move product', 'In-Progress');
@@ -134,7 +129,6 @@ CREATE TABLE IF NOT EXISTS Equipment_Type(
     Model text NOT NULL, Year int NOT NULL, Manufacturer text NOT NULL, Description text, Type text, Warranty_Expiration date, Weight int, Dimensions text,
     primary key(Model, Year, Manufacturer)
 );
-INSERT INTO Equipment_Type (Model, Year, Manufacturer, Description, Type, Warranty_Expiration, Weight, Dimensions) VALUES ('Model', 'Year', 'Manufacturer', 'Description', 'Type', 'Warranty_Expiration', 'Weight', 'Dimensions');
 INSERT INTO Equipment_Type (Model, Year, Manufacturer, Description, Type, Warranty_Expiration, Weight, Dimensions) VALUES ('ProLift 300', 2019, 'LiftTech', 'Heavy-duty lift system', 'Lifting Equipment', '4/10/2024', 500, '50x50x20');
 INSERT INTO Equipment_Type (Model, Year, Manufacturer, Description, Type, Warranty_Expiration, Weight, Dimensions) VALUES ('EarthMover 1500', 2018, 'HeavyMachinery Inc.', 'Powerful excavator', 'Excavation Equipment', '12/30/2023', 2000, '100x120x40');
 INSERT INTO Equipment_Type (Model, Year, Manufacturer, Description, Type, Warranty_Expiration, Weight, Dimensions) VALUES ('SolarPanel Pro', 2022, 'EcoEnergy', 'Efficient solar panel', 'Renewable Energy', '2/18/2027', 50, '65x40x3');
@@ -161,7 +155,6 @@ CREATE TABLE IF NOT EXISTS Purchase_Order(
     Order_Number int NOT NULL, Element_Type text, Quantity int, Value float, Estimated_Arrival_Date date, Actual_Arrival_Date date,
     primary key(Order_Number)
 );
-INSERT INTO Purchase_Order (Order_Number, Element_Type, Quantity, Value, Estimated_Arrival_Date, Actual_Arrival_Date) VALUES ('Order_Number', 'Element_Type', 'Quantity', 'Value', 'Estimated_Arrival_Date', 'Actual_Arrival_Rate');
 INSERT INTO Purchase_Order (Order_Number, Element_Type, Quantity, Value, Estimated_Arrival_Date, Actual_Arrival_Date) VALUES ('ON001', 'ProLift 300', 10, 150000.0, '1/10/2024', '1/8/2024');
 INSERT INTO Purchase_Order (Order_Number, Element_Type, Quantity, Value, Estimated_Arrival_Date, Actual_Arrival_Date) VALUES ('ON002', 'GigaRig 5000', 5, 250000.0, '12/9/2024', '');
 INSERT INTO Purchase_Order (Order_Number, Element_Type, Quantity, Value, Estimated_Arrival_Date, Actual_Arrival_Date) VALUES ('ON003', 'Eagle Z200', 7, 14000.0, '1/23/2024', '2/23/2024');
@@ -185,7 +178,6 @@ INSERT INTO Purchase_Order (Order_Number, Element_Type, Quantity, Value, Estimat
 
 -- Table: Rating_Review
 CREATE TABLE IF NOT EXISTS Rating_Review (Customer_ID text, Review_ID text NOT NULL, Comment text, Rating int, PRIMARY KEY (Review_ID));
-INSERT INTO Rating_Review (Customer_ID, Review_ID, Comment, Rating) VALUES ('Customer_ID', 'Review_ID', 'Comment ', 'Rating');
 INSERT INTO Rating_Review (Customer_ID, Review_ID, Comment, Rating) VALUES ('U002', 'RR001', 'The machine broke down multiple times, I''m very dissappointed ', 1);
 INSERT INTO Rating_Review (Customer_ID, Review_ID, Comment, Rating) VALUES ('U018', 'RR002', 'I''m very pleased with how the machine is working', 4);
 INSERT INTO Rating_Review (Customer_ID, Review_ID, Comment, Rating) VALUES ('U014', 'RR003', 'The equipment broke after filing to lift heavy load', 1);
@@ -209,7 +201,6 @@ INSERT INTO Rating_Review (Customer_ID, Review_ID, Comment, Rating) VALUES ('U00
 
 -- Table: Rental
 CREATE TABLE IF NOT EXISTS Rental (Rental_ID text NOT NULL, Delivery_Drone_ID text, Pickup_Drone_ID text, Customer_ID text, Equipment_ID text, Checkout_Date date, Due_Date date, Return_Date date, Rental_Fee float, PRIMARY KEY (Rental_ID));
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('Rental_ID', 'Delivery_Drone_ID', 'Pickup_Drone_ID', 'Customer_ID', 'Equipment_ID', 'Checkout_Date', 'Due_Date', 'Return_Date', 'Rental_Fee');
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE001', 'D016', 'D017', 'U004', 'E003', '1/23/24', '3/23/24', '3/22/24', 49.99);
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE002', 'D020', 'D015', 'U002', 'E005', '2/23/24', '4/23/24', '4/20/24', 75.5);
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE003', 'D011', 'D002', 'U011', 'E010', '6/17/24', '8/17/24', '8/17/24', 120.25);
@@ -233,7 +224,6 @@ INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, 
 
 -- Table: Requests
 CREATE TABLE IF NOT EXISTS Requests (Request_ID text, Request_Date date, Service_Type text);
-INSERT INTO Requests (Request_ID, Request_Date, Service_Type) VALUES ('Request_ID', 'Request_Date', 'Service_Type');
 INSERT INTO Requests (Request_ID, Request_Date, Service_Type) VALUES ('R001', '1/4/24', 'Mechanical Maintenance');
 INSERT INTO Requests (Request_ID, Request_Date, Service_Type) VALUES ('R002', '2/12/24', 'Electrical Maintenance');
 INSERT INTO Requests (Request_ID, Request_Date, Service_Type) VALUES ('R003', '3/29/24', 'Cosmetic Maintenance');
@@ -257,7 +247,6 @@ INSERT INTO Requests (Request_ID, Request_Date, Service_Type) VALUES ('R020', '5
 
 -- Table: Shipment
 CREATE TABLE IF NOT EXISTS Shipment (Warehouse_ID text, Shipment_ID text NOT NULL, Shipment_Date date, Arrival_Date date, Status text, PRIMARY KEY (Shipment_ID));
-INSERT INTO Shipment (Warehouse_ID, Shipment_ID, Shipment_Date, Arrival_Date, Status) VALUES ('Warehouse_ID', 'Shipment_ID', 'Shipment_Date', 'Arrival_Date', 'Status');
 INSERT INTO Shipment (Warehouse_ID, Shipment_ID, Shipment_Date, Arrival_Date, Status) VALUES ('W001', 'S001', '1/10/24', '1/12/24', 'Delivered');
 INSERT INTO Shipment (Warehouse_ID, Shipment_ID, Shipment_Date, Arrival_Date, Status) VALUES ('W002', 'S002', '1/15/24', '1/20/24', 'Delivered');
 INSERT INTO Shipment (Warehouse_ID, Shipment_ID, Shipment_Date, Arrival_Date, Status) VALUES ('W006', 'S003', '2/5/24', '2/8/24', 'Delivered');
@@ -284,7 +273,6 @@ CREATE TABLE IF NOT EXISTS Warehouse(
     Warehouse_ID text NOT NULL, City text, Address text, Phone text, MGR_Name text, Storage_Capacity int, Drone_Capacity int, 
     primary key(Warehouse_ID)
 );
-INSERT INTO Warehouse (Warehouse_ID, City, Address, Phone, MGR_Name, Storage_Capacity, Drone_Capacity) VALUES ('Warehouse_ID', 'City', 'Address', 'Phone', 'MGR_Name', 'Storage_Capacity', 'Drone_Capacity');
 INSERT INTO Warehouse (Warehouse_ID, City, Address, Phone, MGR_Name, Storage_Capacity, Drone_Capacity) VALUES ('W001', 'Jackson, Mississippi', '2940 Some Lane', '(123) 456-7890', 'Jordan Jordan', 1200, 12);
 INSERT INTO Warehouse (Warehouse_ID, City, Address, Phone, MGR_Name, Storage_Capacity, Drone_Capacity) VALUES ('W002', 'Meeker, Oklahoma', '4760 Random Street', '(987) 654-3210', 'Manny Meihr', 3000, 25);
 INSERT INTO Warehouse (Warehouse_ID, City, Address, Phone, MGR_Name, Storage_Capacity, Drone_Capacity) VALUES ('W003', 'Little Canyon, Texas', '1224 Unreal Avenue', '(111) 111-1111', 'Guy Johnson', 66400, 50);
