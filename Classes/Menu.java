@@ -1,14 +1,8 @@
 package Classes;
 
-import com.sun.jdi.connect.spi.ClosedConnectionException;
-import java.util.HashMap;
 import java.util.Scanner;
-
-import javax.swing.GroupLayout.Group;
-
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.JDBCType;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,8 +19,6 @@ public class Menu {
         public void invoke();
     }
 
-    private final HashMap<String, Customer> customers = new HashMap<>();  // List to store customer records
-    private final HashMap<String, Warehouse> warehouses = new HashMap<>();  // List to store warehouse records
     private final Scanner scanner = new Scanner(System.in);  // Scanner to read user input
     public Connection conn = null;
 
@@ -38,10 +30,6 @@ public class Menu {
         new MenuOption() {@Override public void invoke() {editCustomer(); } },
         new MenuOption() {@Override public void invoke() {deleteCustomer(); } },
         new MenuOption() {@Override public void invoke() {searchCustomer(); } },
-        new MenuOption() {@Override public void invoke() {addWarehouse(); } },
-        new MenuOption() {@Override public void invoke() {editWarehouse(); } },
-        new MenuOption() {@Override public void invoke() {deleteWarehouse(); } },
-        new MenuOption() {@Override public void invoke() {searchWarehouse(); } },
         new MenuOption() {@Override public void invoke() {rentEquipment(); } },
         new MenuOption() {@Override public void invoke() {returnEquipment(); } },
         new MenuOption() {@Override public void invoke() {deliverEquipment(); } },
@@ -77,21 +65,17 @@ public class Menu {
         System.out.println("2. Edit Customer");
         System.out.println("3. Delete Customer");
         System.out.println("4. Search Customer");
-        System.out.println("5. Add Warehouse");
-        System.out.println("6. Edit Warehouse");
-        System.out.println("7. Delete Warehouse");
-        System.out.println("8. Search Warehouse");
-        System.out.println("9. Rent Equipment");
-        System.out.println("10. Return Equipment");
-        System.out.println("11. Schedule Equipment Delivery");
-        System.out.println("12. Schedule Equipment Pickup");
-        System.out.println("13. Find Rented Equipments By User");
-        System.out.println("14. Find Popular Item");
-        System.out.println("15. Find Popular Manufacturer");
-        System.out.println("16. Find Popular Drone");
-        System.out.println("17. Find Item Number From Most Active Member");
-        System.out.println("18. Equipment By Type");
-        System.out.println("19. Exit");
+        System.out.println("5. Rent Equipment");
+        System.out.println("6. Return Equipment");
+        System.out.println("7. Schedule Equipment Delivery");
+        System.out.println("8. Schedule Equipment Pickup");
+        System.out.println("9. Find Rented Equipments By User");
+        System.out.println("10. Find Popular Item");
+        System.out.println("11. Find Popular Manufacturer");
+        System.out.println("12. Find Popular Drone");
+        System.out.println("13. Find Item Number From Most Active Member");
+        System.out.println("14. Equipment By Type");
+        System.out.println("15. Exit");
         System.out.print("Enter your choice: ");
 
         int choice = 0;
@@ -100,10 +84,10 @@ public class Menu {
             try {
                 choice = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println("Please enter a number between 1-19");
+                System.out.println("Please enter a number between 1-15");
                 choice = 0;
             }
-        } while (!(choice >= 1 && choice <= 19));
+        } while (!(choice >= 1 && choice <= 15));
 
         return choice;
     }
@@ -378,134 +362,6 @@ public class Menu {
         } catch (SQLException e) {
             System.err.println("Error finding customer");
             System.exit(0);
-        }
-    }
-
-    // --- Warehouse Management ---
-
-    /**
-     * Add a new warehouse to the system.
-     */
-    private void addWarehouse() {
-        String warehouseId, city, address, phone, managerName;
-        int storageCapacity, droneCapacity;
-
-        while (true) {
-            System.out.print("Enter Warehouse ID: ");
-            warehouseId = scanner.nextLine();
-            if (warehouses.containsKey(warehouseId)) { // If customer already exists, ask again
-                System.out.println("Warehouse already exists. Try again");
-            } else {
-                break;
-            }
-        } 
-
-        System.out.print("Enter City: ");
-        city = scanner.nextLine();
-
-        System.out.print("Enter Address: ");
-        address = scanner.nextLine();
-
-        System.out.print("Enter Phone: ");
-        phone = scanner.nextLine();
-
-        System.out.print("Enter Manager Name: ");
-        managerName = scanner.nextLine();
-
-        System.out.print("Enter Storage Capacity: ");
-        storageCapacity = Integer.parseInt(scanner.nextLine());
-
-        System.out.print("Enter Drone Capacity: ");
-        droneCapacity = Integer.parseInt(scanner.nextLine());
-
-        Warehouse warehouse = new Warehouse(warehouseId, city, address, phone, managerName, storageCapacity, droneCapacity);
-        warehouses.put(warehouseId, warehouse);  // Add warehouse to the list
-        System.out.println("Warehouse added successfully: " + warehouse);
-    }
-
-    /**
-     * Edit an existing warehouse's information.
-     */
-    private void editWarehouse() {
-        String warehouseId, city, address, phone, managerName, storageCapacityString, droneCapacityString;
-
-        System.out.print("Enter Warehouse ID of warehouse to edit: ");
-        warehouseId = scanner.nextLine();
-
-        Warehouse warehouse;
-        if (warehouses.containsKey(warehouseId)) { // Only add if customer does not already exist
-            warehouse = warehouses.get(warehouseId);
-        } else {
-            System.out.println("Warehouse does not exist.");
-            return;
-        } 
-
-        // Ask for new information
-        System.out.print("Enter new City (or press Enter to keep current): ");
-        city = scanner.nextLine();
-        if (!city.isEmpty()) {
-            warehouse.setCity(city);
-        }
-
-        System.out.print("Enter new Address (or press Enter to keep current): ");
-        address = scanner.nextLine();
-        if (!address.isEmpty()) {
-            warehouse.setAddress(address);
-        }
-
-        System.out.print("Enter new Phone (or press Enter to keep current): ");
-        phone = scanner.nextLine();
-        if (!phone.isEmpty()) {
-            warehouse.setPhone(phone);
-        }
-
-        System.out.print("Enter new Manager Name (or press Enter to keep current): ");
-        managerName = scanner.nextLine();
-        if (!managerName.isEmpty()) {
-            warehouse.setManagerName(managerName);
-        }
-
-        System.out.print("Enter new Storage Capacity (or press Enter to keep current): ");
-        storageCapacityString = scanner.nextLine();
-        if (!storageCapacityString.isEmpty()) {
-            warehouse.setStorageCapacity(Integer.parseInt(storageCapacityString));
-        }
-
-        System.out.print("Enter new Drone Capacity (or press Enter to keep current): ");
-        droneCapacityString = scanner.nextLine();
-        if (!droneCapacityString.isEmpty()) {
-            warehouse.setDroneCapacity(Integer.parseInt(droneCapacityString));
-        }
-    }
-
-    /**
-     * Delete a warehouse from the system.
-     */
-    private void deleteWarehouse() {
-        System.out.print("Enter Warehouse ID of warehouse to delete: ");
-        String warehouseId = scanner.nextLine();
-
-        if (warehouses.remove(warehouseId) != null) {
-            System.out.println("Warehouse deleted successfully.");
-        } else {
-            // If no customer was found with the provided ID
-            System.out.println("Warehouse not found.");
-        }
-    }
-
-    /**
-     * Search for a warehouse by ID.
-     */
-    private void searchWarehouse() {
-        System.out.print("Enter Warehouse ID of warehouse to search: ");
-        String warehouseId = scanner.nextLine();
-
-        Warehouse warehouse = warehouses.get(warehouseId);
-        if (warehouse != null) {
-            System.out.println("Warehouse found: " + warehouse);
-        } else {
-            // If no customer was found with the provided ID
-            System.out.println("Warehouse not found.");
         }
     }
 
@@ -855,8 +711,9 @@ public class Menu {
             String count = rSet.getString(2);
             System.out.println("The member with the most items checkout is user " + customer + " at " + count + " items");
         } catch (SQLException e) {
+            System.err.println("Error getting user and checkouts");
+            System.exit(0);
         }
-        
     }
     
     /**
@@ -889,10 +746,8 @@ public class Menu {
                 System.out.println(modl + ",  " + manu + ",  " + yr + ",  " + snum + ",  " + stats + ",  " + loc);
             }
         } catch (SQLException ex) {
+            System.err.println("Error getting equipment table");
+            System.exit(0);
         }
-
-
-        System.out.println("Here is the description of the equipment by type released before YEAR");
-        
     }
 }
