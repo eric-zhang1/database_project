@@ -1,15 +1,14 @@
 /* WarehouseProductivity */
 CREATE VIEW WarehouseProductivity AS
 SELECT W.Warehouse_ID, W.City, W.Address, COUNT(R.Equipment_ID) AS Total_Equipment_Rented
-FROM (WAREHOUSE AS W JOIN EQUIPMENT_MAIN ON WAREHOUSE.Warehouse_ID = EQUIPMENT_MAIN.Warehouse_ID) 
-    JOIN RENTAL AS R ON EQUIPMENT_MAIN.Serial_Number = RENTAL.Equipment_ID
+FROM (WAREHOUSE AS W JOIN EQUIPMENT_MAIN AS E ON WAREHOUSE.Warehouse_ID = EQUIPMENT_MAIN.Warehouse_ID) JOIN RENTAL AS R ON EQUIPMENT_MAIN.Serial_Number = RENTAL.Equipment_ID
 GROUP BY W.Warehouse_ID, W.City, W.Address
 ORDER BY Total_Equipment_Rented DESC;
 
 /* FaultiestEquipment */
 CREATE VIEW FaultiestEquipment AS
 SELECT T.Model, T.Manufacturer, T.Year, T.Description, COUNT(S.Request_ID) AS Total_Service_Requests
-FROM (EQUIPMENT_TYPE AS T JOIN EQUIPMENT_MAIN ON EQUIPMENT_TYPE.Model = EQUIPMENT_MAIN.Model 
+FROM (EQUIPMENT_TYPE AS T JOIN EQUIPMENT_MAIN AS E ON EQUIPMENT_TYPE.Model = EQUIPMENT_MAIN.Model 
     AND EQUIPMENT_TYPE.Manufacturer = EQUIPMENT_MAIN.Manufacturer AND EQUIPMENT_TYPE.Year = EQUIPMENT_MAIN.Year)
     JOIN EQUIPMENT_SERVICE_REQUEST AS S ON EQUIPMENT_MAIN.Serial_Number = EQUIPMENT_SERVICE_REQUEST.Equipment_ID
 GROUP BY T.Model, T.Manufacturer, T.Year, T.Description
