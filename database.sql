@@ -1,7 +1,7 @@
 --
--- File generated with SQLiteStudio v3.4.4 on Tue Nov 5 13:38:52 2024
+-- File generated with SQLiteStudio v3.4.4 on Sun Nov 24 14:26:58 2024
 --
--- Text encoding used: UTF-8
+-- Text encoding used: System
 --
 PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
@@ -103,26 +103,26 @@ INSERT INTO Equipment_Main (Warehouse_ID, Serial_Number, Shipment_ID, Order_Numb
 
 -- Table: Equipment_Service_Request
 CREATE TABLE IF NOT EXISTS Equipment_Service_Request (Customer_ID text, Request_ID text NOT NULL, Equipment_ID text, Description text, Status text, PRIMARY KEY (Request_ID));
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U002', 'R001', 'E001', 'Machine stopped working, could not restart itÂ ', 'CompletedÂ ');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U003', 'R002', 'E010', 'Machine failed after trying to move heavy loadÂ ', 'Requested');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U002', 'R001', 'E001', 'Machine stopped working, could not restart it ', 'Completed ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U003', 'R002', 'E010', 'Machine failed after trying to move heavy load ', 'Requested');
 INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U014', 'R003', 'E003', 'Machine is taking too long to move product', 'In-Progress');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U015', 'R004', 'E007', 'Machine battery is not properly chargingÂ ', 'In-Progress');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U016', 'R005', 'E011', 'Equipment is failing under heavy load. Not as effective as advertizedÂ ', 'CompletedÂ ');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U002', 'R006', 'E020', 'Equipment providing inaccurate measurementsÂ ', 'In-Progress');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U010', 'R007', 'E019', 'Equipment is jammed and is unable to move productÂ ', 'CompletedÂ ');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U011', 'R008', 'E013', 'Equipment is not pumping water at an effective rate, it''s too slow', 'CompletedÂ ');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U001', 'R009', 'E006', 'Machine is not able to lift items above 10 ft. Should be able to do 25 ft', 'CompletedÂ ');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U002', 'R010', 'E009', 'Machine cable severed after trying to lift heavy palletÂ ', 'CompletedÂ ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U015', 'R004', 'E007', 'Machine battery is not properly charging ', 'In-Progress');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U016', 'R005', 'E011', 'Equipment is failing under heavy load. Not as effective as advertized ', 'Completed ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U002', 'R006', 'E020', 'Equipment providing inaccurate measurements ', 'In-Progress');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U010', 'R007', 'E019', 'Equipment is jammed and is unable to move product ', 'Completed ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U011', 'R008', 'E013', 'Equipment is not pumping water at an effective rate, it''s too slow', 'Completed ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U001', 'R009', 'E006', 'Machine is not able to lift items above 10 ft. Should be able to do 25 ft', 'Completed ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U002', 'R010', 'E009', 'Machine cable severed after trying to lift heavy pallet ', 'Completed ');
 INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U002', 'R011', 'E002', 'Wire snapped from machine.', 'In-Progress');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U009', 'R012', 'E014', 'The machine arrived completely broken', 'CompletedÂ ');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U009', 'R013', 'E014', 'The machine was still broken after being returned', 'CompletedÂ ');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U018', 'R014', 'E005', 'The machine was completely broken', 'CompletedÂ ');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U018', 'R015', 'E020', 'The measurements are completely off', 'CompletedÂ ');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U014', 'R016', 'E012', 'The machine broke after lifting a heavy object', 'CompletedÂ ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U009', 'R012', 'E014', 'The machine arrived completely broken', 'Completed ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U009', 'R013', 'E014', 'The machine was still broken after being returned', 'Completed ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U018', 'R014', 'E005', 'The machine was completely broken', 'Completed ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U018', 'R015', 'E020', 'The measurements are completely off', 'Completed ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U014', 'R016', 'E012', 'The machine broke after lifting a heavy object', 'Completed ');
 INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U009', 'R017', 'E014', 'Machine broke again', 'In Progress');
 INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U006', 'R018', 'E017', 'Screws are too rusty and the machine is stuck', 'Requested');
 INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U020', 'R019', 'E003', 'The paint on the machine is chipped and is proventing functionality', 'Requested');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U012', 'R020', 'E020', 'The machine short circuited', 'CompletedÂ ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U012', 'R020', 'E020', 'The machine short circuited', 'Completed ');
 
 -- Table: Equipment_Type
 CREATE TABLE IF NOT EXISTS Equipment_Type(
@@ -178,7 +178,7 @@ INSERT INTO Purchase_Order (Order_Number, Element_Type, Quantity, Value, Estimat
 
 -- Table: Rating_Review
 CREATE TABLE IF NOT EXISTS Rating_Review (Customer_ID text, Review_ID text NOT NULL, Comment text, Rating int, PRIMARY KEY (Review_ID));
-INSERT INTO Rating_Review (Customer_ID, Review_ID, Comment, Rating) VALUES ('U002', 'RR001', 'The machine broke down multiple times, I''m very dissappointedÂ ', 1);
+INSERT INTO Rating_Review (Customer_ID, Review_ID, Comment, Rating) VALUES ('U002', 'RR001', 'The machine broke down multiple times, I''m very dissappointed ', 1);
 INSERT INTO Rating_Review (Customer_ID, Review_ID, Comment, Rating) VALUES ('U018', 'RR002', 'I''m very pleased with how the machine is working', 4);
 INSERT INTO Rating_Review (Customer_ID, Review_ID, Comment, Rating) VALUES ('U014', 'RR003', 'The equipment broke after filing to lift heavy load', 1);
 INSERT INTO Rating_Review (Customer_ID, Review_ID, Comment, Rating) VALUES ('U020', 'RR004', 'The Precision R100 gave perfect measures!', 5);
@@ -200,27 +200,29 @@ INSERT INTO Rating_Review (Customer_ID, Review_ID, Comment, Rating) VALUES ('U00
 INSERT INTO Rating_Review (Customer_ID, Review_ID, Comment, Rating) VALUES ('U001', 'RR020', 'My delivery drone broke down so my order came late.', 3);
 
 -- Table: Rental
-CREATE TABLE IF NOT EXISTS Rental (Rental_ID text NOT NULL, Delivery_Drone_ID text, Pickup_Drone_ID text, Customer_ID text, Equipment_ID text, Checkout_Date date, Due_Date date, Return_Date date, Rental_Fee float, PRIMARY KEY (Rental_ID));
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE001', 'D016', 'D017', 'U004', 'E003', '1/23/24', '3/23/24', '3/22/24', 49.99);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE002', 'D020', 'D015', 'U002', 'E005', '2/23/24', '4/23/24', '4/20/24', 75.5);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE003', 'D011', 'D002', 'U011', 'E010', '6/17/24', '8/17/24', '8/17/24', 120.25);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE004', 'D019', 'D007', 'U009', 'E014', '8/4/24', '10/4/24', '10/1/24', 89.95);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE005', 'D006', 'D006', 'U005', 'E017', '9/26/24', '11/26/24', 'NULL', 150.0);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE006', 'D001', 'D004', 'U018', 'E020', '10/26/24', '12/26/24', 'NULL', 65.75);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE007', 'D003', 'D010', 'U002', 'E005', '11/12/23', '1/12/24', '1/12/24', 80.0);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE008', 'D004', 'D003', 'U012', 'E020', '6/14/23', '8/14/23', '8/16/23', 67.0);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE009', 'D009', 'D010', 'U020', 'E003', '1/10/22', '3/10/22', '3/12/22', 49.99);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE010', 'D013', 'D011', 'U011', 'E004', '4/5/22', '6/5/22', '6/7/22', 67.99);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE011', 'D015', 'D020', 'U002', 'E014', '8/1/22', '10/1/22', '10/3/22', 89.95);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE012', 'D019', 'D006', 'U001', 'E004', '11/15/22', '1/15/23', '1/13/23', 67.99);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE013', 'D003', 'D009', 'U005', 'E008', '2/20/23', '4/20/23', '4/22/23', 100.0);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE014', 'D010', 'D001', 'U011', 'E017', '5/30/23', '7/30/23', '8/1/23', 150.0);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE015', 'D011', 'D020', 'U007', 'E003', '9/25/23', '11/25/23', '11/28/23', 49.99);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE016', 'D004', 'D015', 'U014', 'E012', '1/15/24', '3/15/24', '3/17/24', 142.5);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE017', 'D020', 'D007', 'U002', 'E015', '4/10/24', '6/10/24', '6/8/24', 155.99);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE018', 'D014', 'D002', 'U008', 'E020', '7/4/24', '9/4/24', '9/6/24', 65.75);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE019', 'D005', 'D011', 'U006', 'E017', '10/30/24', '12/30/24', '12/28/24', 150.0);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE020', 'D018', 'D016', 'U018', 'E005', '2/14/24', '4/14/24', '4/12/24', 75.5);
+CREATE TABLE IF NOT EXISTS Rental (Rental_ID text NOT NULL, Delivery_Drone_ID text, Pickup_Drone_ID text, Customer_ID text, Equipment_ID text, Checkout_Date TEXT, Due_Date TEXT, Return_Date TEXT, Rental_Fee float, PRIMARY KEY (Rental_ID));
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE001', 'D016', 'D017', 'U004', 'E003', '2024-01-23', '2024-03-23', '2024-03-22', 49.99);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE002', 'D020', 'D015', 'U002', 'E005', '2024-02-23', '2024-04-23', '2024-04-20', 75.5);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE003', 'D011', 'D002', 'U011', 'E010', '2024-06-17', '2024-08-17', '2024-08-17', 120.25);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE004', 'D019', 'D007', 'U009', 'E014', '2024-08-04', '2024-10-04', '2024-10-01', 89.95);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE005', 'D006', 'D006', 'U005', 'E017', '2024-09-26', '2024-11-26', '', 150.0);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE006', 'D001', 'D004', 'U018', 'E020', '2024-10-26', '2024-12-26', '', 65.75);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE007', 'D003', 'D010', 'U002', 'E005', '2024-11-12', '2024-01-12', '2024-01-12', 80.0);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE008', 'D004', 'D003', 'U012', 'E020', '2024-06-14', '2023-08-14', '2023-08-16', 67.0);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE009', 'D009', 'D010', 'U020', 'E003', '2022-01-10', '2022-03-10', '2022-03-12', 49.99);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE010', 'D013', 'D011', 'U011', 'E004', '2022-04-05', '2022-06-05', '2022-06-07', 67.99);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE011', 'D015', 'D020', 'U002', 'E014', '2022-08-01', '2022-10-01', '2022-10-03', 89.95);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE012', 'D019', 'D006', 'U001', 'E004', '2022-11-15', '2023-01-15', '2023-01-13', 67.99);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE013', 'D003', 'D009', 'U005', 'E008', '2023-02-20', '2023-04-20', '2023-04-22', 100.0);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE014', 'D010', 'D001', 'U011', 'E017', '2023-05-30', '2023-07-30', '2023-08-01', 150.0);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE015', 'D011', 'D020', 'U007', 'E003', '2023-09-25', '2023-11-25', '2023-11-28', 49.99);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE016', 'D004', 'D015', 'U014', 'E012', '2024-01-15', '2024-03-15', '2024-03-17', 142.5);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE017', 'D020', 'D007', 'U002', 'E015', '2024-04-10', '2024-06-10', '2024-06-08', 155.99);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE018', 'D014', 'D002', 'U008', 'E020', '2024-07-04', '2024-09-04', '2024-09-06', 65.75);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE019', 'D005', 'D011', 'U006', 'E017', '2024-10-30', '2024-12-30', '2024-12-28', 150.0);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE020', 'D018', 'D016', 'U018', 'E005', '2024-02-14', '2024-04-14', '2024-04-12', 75.5);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE021', 'D004', 'D017', 'U003', 'E012', '2024-11-24', '2025-01-12', '2024-11-24', 12.09000015258789);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE022', 'D006', 'D001', 'U004', 'E015', '2025-02-12', '2024-11-24', '2024-11-24', 15.6899995803833);
 
 -- Table: Requests
 CREATE TABLE IF NOT EXISTS Requests (Request_ID text, Request_Date date, Service_Type text);
@@ -293,6 +295,12 @@ INSERT INTO Warehouse (Warehouse_ID, City, Address, Phone, MGR_Name, Storage_Cap
 INSERT INTO Warehouse (Warehouse_ID, City, Address, Phone, MGR_Name, Storage_Capacity, Drone_Capacity) VALUES ('W018', 'Phoenix, Arizona', '1254 Fig St', '(602) 555-0573', 'Lisa Adams', 5300, 25);
 INSERT INTO Warehouse (Warehouse_ID, City, Address, Phone, MGR_Name, Storage_Capacity, Drone_Capacity) VALUES ('W019', 'Dallas, Texas', '7891 Hickory Ln', '(214) 555-0491', 'Andrew Turner', 6000, 12);
 INSERT INTO Warehouse (Warehouse_ID, City, Address, Phone, MGR_Name, Storage_Capacity, Drone_Capacity) VALUES ('W020', 'Nashville, Tennessee', '2460 Cherry St', '(615) 555-0358', 'Michelle Hall', 5500, 22);
+
+-- Index: Equipment_Type_Index
+CREATE INDEX IF NOT EXISTS Equipment_Type_Index ON Equipment_Main (Model, Year, Manufacturer);
+
+-- Index: Rental_Info
+CREATE INDEX IF NOT EXISTS Rental_Info ON Rental (Customer_ID, Equipment_ID);
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;

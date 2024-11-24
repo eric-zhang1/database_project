@@ -3,10 +3,16 @@ package Classes;
 import com.sun.jdi.connect.spi.ClosedConnectionException;
 import java.util.HashMap;
 import java.util.Scanner;
+
+import javax.swing.GroupLayout.Group;
+
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.JDBCType;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 /**
  * Main class for the Equipment Rental Application
@@ -119,7 +125,7 @@ public class Menu {
         while (true) {
             System.out.print("Enter User ID: ");
             userId = scanner.nextLine();
-            if (customerExists(userId)) { // If customer already exists, ask again
+            if (isInTable("Customer", "User_ID", userId)) { // If customer already exists, ask again
                 System.out.println("Customer already exists. Try again");
             } else {
                 break;
@@ -201,7 +207,7 @@ public class Menu {
         System.out.print("Enter User ID of customer to edit: ");
         userId = scanner.nextLine();
         // Check if the customer exists, if not return.
-        if (!customerExists(userId)) {
+        if (!isInTable("Customer", "User_ID", userId)) {
             System.out.println("Customer with User ID: " + userId + " does not exist.");
             return;
         }
@@ -286,7 +292,7 @@ public class Menu {
         System.out.print("Enter User ID of customer to delete: ");
         String userId = scanner.nextLine();
 
-        if (!customerExists(userId)) {
+        if (!isInTable("Customer", "User_ID", userId)) {
             // If no customer was found with the provided ID
             System.out.println("Customer not found.");
         }
@@ -311,13 +317,13 @@ public class Menu {
     /**
      * Private support fuction to return the customers in the database
      */
-    private boolean customerExists(String userID) {
-        String queryString = "SELECT * FROM Customer WHERE User_ID = ?;";
+    private boolean isInTable(String table, String attrName, String attrVal) {
+        String queryString = "SELECT * FROM " + table + " WHERE " + attrName + " = ?;";
         ResultSet rSet;
         PreparedStatement getCustomer;
         try {
             getCustomer = conn.prepareStatement(queryString);
-            getCustomer.setString(1, userID);
+            getCustomer.setString(1, attrVal);
             rSet = getCustomer.executeQuery();
             // Courtesy of Seifer from https://stackoverflow.com/questions/867194/java-resultset-how-to-check-if-there-are-any-results
             // If the rSet's cursor is not before the first record immidiately upon return, there are no rows in the ResultSet
@@ -509,114 +515,384 @@ public class Menu {
      * Placeholder for renting equipment.
      */
     private void rentEquipment() {
-        // In future checkpoints, implement the equipment rental process here
-        System.out.print("Enter User ID of customer to rent equipment: ");
-        String userId = scanner.nextLine();
-        /*
-        if (customer == null) {
-            System.out.println("Customer not found.");
+        String queryString = "INSERT INTO Rental(Rental_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Rental_Fee)"
+                        + "VALUES (?, ?, ?, ?, ?, ?);";
+        String newRentalID = "SELECT Rental_ID FROM Rental ORDER BY Rental_ID DESC LIMIT 1;";
+        PreparedStatement rentEquipment, getRentalID;
+        ResultSet rentalSet;
+        
+        System.out.println("Enter User ID of customer to rent equipment: ");
+        String userID = scanner.nextLine();
+        if (!isInTable("Customer", "User_ID", userID)) {
+            System.out.println("User " + userID + " does not exist");
             return;
         }
-        */
 
-        System.out.println("Equipment rented by User: " + userId);
+        System.out.println("Enter Equipment ID of equipment to be rent out: ");
+        String equipmentID = scanner.nextLine();
+        if (!isInTable("Equipment_Main", "Serial_Number", equipmentID)) {
+            System.out.println("Equipment " + equipmentID + " does not exist");
+            return;
+        }
+        
+        System.out.println("Enter Date Due (YYYY-MM-DD): ");
+        String dueDate = Date.valueOf(scanner.nextLine()).toString();
+
+        String currentDate = Date.valueOf(LocalDate.now()).toString();
+
+        System.out.println("Enter the Rental Fee: ");
+        float rentalFee = scanner.nextFloat();
+        // Skip empty line
+        scanner.nextLine();
+
+        try {
+            getRentalID = conn.prepareStatement(newRentalID);
+            rentalSet = getRentalID.executeQuery();
+            rentalSet.next();
+            String rentalID = rentalSet.getString("Rental_ID");
+
+            //Parse the string
+            rentalID = incrementRentalID(rentalID);
+
+            rentEquipment = conn.prepareStatement(queryString);
+            rentEquipment.setString(1, rentalID);
+            rentEquipment.setString(2, userID);
+            rentEquipment.setString(3,  equipmentID);
+            rentEquipment.setString(4, dueDate);
+            rentEquipment.setString(5, currentDate);
+            rentEquipment.setFloat(6, rentalFee);
+            rentEquipment.executeUpdate();
+
+            rentEquipment.close();
+        } catch (SQLException e) {
+            System.err.println("SQL Error: " + e.toString());
+            System.err.println(queryString);
+            System.err.println("Error adding new rental by user " + userID);
+            System.exit(0);
+        }
+
+
+        System.out.println("Equipment rented by User: " + userID);
+    }
+
+    /**
+     * 
+     */
+    private String incrementRentalID(String ID) {
+        String numberSequence = ID.substring(2);    // Grabs the 3 number sequence
+        int newIDNum = Integer.parseInt(numberSequence) + 1;
+        String newID = ID.substring(0, 2) + String.format("%03d", newIDNum);
+        System.out.println(newID);
+        return newID;
     }
 
     /**
      * Placeholder for returning equipment.
      */
     private void returnEquipment() {
-        // In future checkpoints, implement the equipment return process here
-        System.out.print("Enter User ID of customer to return equipment: ");
-        String userId = scanner.nextLine();
-        /*
-        if (customer == null) {
-            System.out.println("Customer not found.");
+        String queryString = "UPDATE Rental SET Return_Date = ? WHERE Customer_ID = ? AND Equipment_ID = ?;";
+        PreparedStatement returnEquipment;
+
+        String currentDate = Date.valueOf(LocalDate.now()).toString();
+
+        System.out.println("Enter User ID of customer to return equipment: ");
+        String userID = scanner.nextLine();
+        if (!isInTable("Customer", "User_ID", userID)) {
+            System.out.println("User " + userID + " does not exist");
             return;
         }
-        */
 
-        System.out.println("Equipment returned by User: " + userId);
+        System.out.println("Enter Equipment ID of equipment to be returned: ");
+        String equipmentID = scanner.nextLine();
+        if (!isInTable("Equipment_Main", "Serial_Number", equipmentID)) {
+            System.out.println("Equipment " + equipmentID + " does not exist");
+            return;
+        }
+
+        try {
+            returnEquipment = conn.prepareStatement(queryString);
+            returnEquipment.setString(1, currentDate);
+            returnEquipment.setString(2, userID);
+            returnEquipment.setString(3,  equipmentID);
+            returnEquipment.executeUpdate();
+
+            returnEquipment.close();
+        } catch (SQLException e) {
+            System.err.println("Error returning equipment " + equipmentID + " by user " + userID);
+            System.exit(0);
+        }
+
+        System.out.println("Equipment returned by User: " + userID);
     }
 
     /**
      * Placeholder for scheduling equipment delivery.
      */
     private void deliverEquipment() {
-        // In future checkpoints, implement the equipment delivery process here
-        System.out.print("Enter User ID of customer to deliver equipment: ");
-        String userId = scanner.nextLine();
-        /*
-        if (customer == null) {
-            System.out.println("Customer not found.");
+        String queryString = "UPDATE Rental SET Delivery_Drone_ID = ? WHERE Customer_ID = ? AND Equipment_ID = ?;";
+        PreparedStatement deliverEquipment;
+
+        System.out.println("Enter User ID of customer to rent equipment: ");
+        String userID = scanner.nextLine();
+        if (!isInTable("Customer", "User_ID", userID)) {
+            System.out.println("User " + userID + " does not exist");
             return;
         }
-        */
 
-        System.out.println("Equipment delivery scheduled by User: " + userId);
+        System.out.println("Enter Equipment ID of equipment to be rented: ");
+        String equipmentID = scanner.nextLine();
+        if (!isInTable("Equipment_Main", "Serial_Number", equipmentID)) {
+            System.out.println("Equipment " + equipmentID + " does not exist");
+            return;
+        }
+
+        System.out.println("Enter Drone ID of drone to deliver equipment: ");
+        String droneID = scanner.nextLine();
+        if (!isInTable("Drone_Main", "Serial_Number", droneID)) {
+            System.out.println("Drone " + droneID + " does not exist");
+            return;
+        }
+
+        try {
+            deliverEquipment = conn.prepareStatement(queryString);
+            deliverEquipment.setString(1, droneID);
+            deliverEquipment.setString(2,  userID);
+            deliverEquipment.setString(3, equipmentID);
+            deliverEquipment.executeUpdate();
+
+            deliverEquipment.close();
+        } catch (SQLException e) {
+            System.err.println("Error delivering equipment " + equipmentID + " by user " + userID);
+            System.exit(0);
+        }
+
+
+        System.out.println("Equipment delivery scheduled by User: " + userID);
     }
 
     /**
      * Placeholder for scheduling equipment pickup.
      */
     private void pickupEquipment() {
-        // In future checkpoints, implement the equipment pickup process here
-        System.out.print("Enter User ID of customer to pickup equipment: ");
-        String userId = scanner.nextLine();
-        /*
-        if (customer == null) {
-            System.out.println("Customer not found.");
+        String queryString = "UPDATE Rental SET Pickup_Drone_ID = ? WHERE Customer_ID = ? AND Equipment_ID = ?;";
+        PreparedStatement pickupEquipment;
+
+        System.out.println("Enter User ID of customer to return equipment: ");
+        String userID = scanner.nextLine();
+        if (!isInTable("Customer", "User_ID", userID)) {
+            System.out.println("User " + userID + " does not exist");
             return;
         }
-        */
 
-        System.out.println("Equipment pickup scheduled by User: " + userId);
+        System.out.println("Enter Equipment ID of equipment to be returned: ");
+        String equipmentID = scanner.nextLine();
+        if (!isInTable("Equipment_Main", "Serial_Number", equipmentID)) {
+            System.out.println("Equipment " + equipmentID + " does not exist");
+            return;
+        }
+
+        System.out.println("Enter Drone ID of drone to pickup equipment: ");
+        String droneID = scanner.nextLine();
+        if (!isInTable("Drone_Main", "Serial_Number", droneID)) {
+            System.out.println("Drone " + droneID + " does not exist");
+            return;
+        }
+
+        try {
+            pickupEquipment = conn.prepareStatement(queryString);
+            pickupEquipment.setString(1, droneID);
+            pickupEquipment.setString(2,  userID);
+            pickupEquipment.setString(3, equipmentID);
+            pickupEquipment.executeUpdate();
+
+            pickupEquipment.close();
+        } catch (SQLException e) {
+            System.err.println("Error picking up equipment " + equipmentID + " by user " + userID);
+            System.exit(0);
+        }
+
+        System.out.println("Equipment pick up scheduled by User: " + userID);
     }
 
     // --- Report Placeholders ---
 
     /**
-     * Placeholder for renting checkouts
+     * Method to return the number of checkouts by specific user
      */
     private void rentCheckouts() {
+        String queryString = "SELECT COUNT(Equipment_ID) FROM Rental GROUP BY Customer_ID HAVING Customer_ID = ?;";
+        PreparedStatement rentCheckStatement;
+        ResultSet rSet;
+
         System.out.println("Enter member ID:");
         String userID = scanner.nextLine();
 
-        System.out.println("Returning number of equipments rented by " + userID);
+        try {
+            /*
+            * SELECT COUNT (Equipment_ID)
+            * From RENTAL
+            * Group By Customer_ID
+            * HAVING Customer_ID = ?;
+            */
+            rentCheckStatement = conn.prepareStatement(queryString);
+            rentCheckStatement.setString(1, userID);
+
+            rSet = rentCheckStatement.executeQuery();
+            // No rentals in database
+            if (!rSet.isBeforeFirst()) {
+                System.out.println("There are no rentals in the database");
+                return;
+            }
+            rSet.next();
+            String count = rSet.getString(1);
+            System.out.println("User " + userID + " has rented a total of " + count + " equipments.");
+        } catch (SQLException ex) {
+            System.err.println("Error finding total rented equipments from user " + userID);
+            System.exit(0);
+        }
     }
 
     /**
      * Placeholder for Popular Item
      */
     private void popularItem() {
-        System.out.println("The most popular item is [something]");
+        String popularItemString = "SELECT Model, Manufacturer, Year FROM Equipment_Main WHERE Equipment_Main.Serial_Number IN (" +
+                                "SELECT Equipment_ID From RENTAL Group By Equipment_ID ORDER BY COUNT(Customer_ID) DESC LIMIT 1);";
+        PreparedStatement popularItem;
+        ResultSet rSet;
+
+        try {
+            // Get the serial number for the rental
+            popularItem = conn.prepareStatement(popularItemString);
+            rSet = popularItem.executeQuery();
+            if (!rSet.isBeforeFirst()) {
+                System.out.println("There are no rentals in the database");
+                return;
+            }
+            rSet.next();
+            String model = rSet.getString("Model");
+            String manufacturer = rSet.getString("Manufacturer");
+            String year = rSet.getString("Year");
+            System.out.println("The most popular item is the " + year + ", " + model + " from " + manufacturer);
+        } catch (SQLException e) {
+            System.err.println("Error finding the most popular equipment");
+            System.exit(0);
+        }
     }
 
     /**
      * Placeholder for popular manufacturer
      */
     private void popularManufacturer() {
-        System.out.println("The most popular manufacturer is [someone]");
+        String popularItemString = "SELECT Manufacturer FROM (Rental AS R JOIN Equipment_Main AS EM ON R.Equipment_ID = EM.Serial_Number)" +
+                                    "GROUP BY Manufacturer ORDER BY COUNT(R.Rental_ID) DESC LIMIT 1;";
+        PreparedStatement popularItem;
+        ResultSet rSet;
+
+        try {
+            // Get the serial number for the rental
+            popularItem = conn.prepareStatement(popularItemString);
+            rSet = popularItem.executeQuery();
+            if (!rSet.isBeforeFirst()) {
+                System.out.println("There are no rentals in the database");
+                return;
+            }
+            rSet.next();
+            String manufacturer = rSet.getString("Manufacturer");
+            System.out.println("The most popular manufactuere is " + manufacturer);
+        } catch (SQLException e) {
+            System.err.println("Error finding the most popular manufacturer");
+            System.exit(0);
+        }
     }
 
     /**
      * Placeholder for popular drone
      */
     private void popularDrone() {
-        System.out.println("The most popular drone is [drone]");
+        String popularDroneQuery = "SELECT Model, Manufacturer, Year FROM Drone_Main WHERE Drone_Main.Serial_Number IN " +
+                        "(SELECT Drone_ID From " +
+                        "(SELECT Delivery_Drone_ID AS Drone_ID FROM Rental UNION ALL SELECT Pickup_Drone_ID AS Drone_ID FROM Rental)" +
+                        "Group By Drone_ID ORDER BY COUNT(*) DESC LIMIT 1);";
+        PreparedStatement popularDrone;
+        ResultSet rSet;
+        try {
+            // Get the serial number for the rental
+            popularDrone = conn.prepareStatement(popularDroneQuery);
+            rSet = popularDrone.executeQuery();
+            if (!rSet.isBeforeFirst()) {
+                System.out.println("There are no rentals in the database");
+                return;
+            }
+            rSet.next();
+            String model = rSet.getString("Model");
+            String manufacturer = rSet.getString("Manufacturer");
+            String year = rSet.getString("Year");
+            System.out.println("The most popular drone is the " + year + ", " + model + " from " + manufacturer);
+        } catch (SQLException e) {
+            System.err.println("Error finding the most popular manufacturer");
+            System.exit(0);
+        }
     }
 
     /**
      * Placeholder for items checked out
      */
     private void itemsCheckedOut() {
-        System.out.println("The member with the most items checkout is [someone] at [#] items");
+        String itemsCheckedQuery = "SELECT Customer_ID, COUNT (Equipment_ID) as Total_Equipment_Rented " +
+                        "From RENTAL Group By Customer_ID ORDER BY Total_Equipment_Rented DESC Limit 1;";
+        PreparedStatement itemsChecked;
+        ResultSet rSet;
+
+        try {
+            itemsChecked = conn.prepareStatement(itemsCheckedQuery);
+            rSet = itemsChecked.executeQuery();
+            if (!rSet.isBeforeFirst()) {
+                System.out.println("Database empty");
+            }
+            rSet.next();
+            String customer = rSet.getString(1);
+            String count = rSet.getString(2);
+            System.out.println("The member with the most items checkout is user " + customer + " at " + count + " items");
+        } catch (SQLException e) {
+        }
+        
     }
     
     /**
      * Placeholder for equipment by type
      */
     private void equipmentByType() {
+        String equipByTypeQuery = "SELECT Model, Manufacturer, Year, Serial_Number, Status, Location FROM Equipment_Main WHERE Year > ? ORDER BY Model, Manufacturer, Year;";
+        PreparedStatement equipByType;
+        ResultSet rSet;
+        System.out.println("Enter year of equipment release");
+        // Get the year needed to check
+        int year = Integer.parseInt(scanner.nextLine());
+
+        try {
+            equipByType = conn.prepareStatement(equipByTypeQuery);
+            equipByType.setInt(1, year);
+
+            rSet = equipByType.executeQuery();
+            if (!rSet.isBeforeFirst()) {
+                System.out.println("Equipment Main empty");
+            }
+            System.out.println("Model,  Manufacturer,  Year,  Serial_Number,  Status,  Location");
+            while (rSet.next()) {
+                String modl = rSet.getString("Model");
+                String manu = rSet.getString("Manufacturer");
+                String yr = rSet.getString("Year");
+                String snum = rSet.getString("Serial_Number");
+                String stats = rSet.getString("Status");
+                String loc = rSet.getString("Location");
+                System.out.println(modl + ",  " + manu + ",  " + yr + ",  " + snum + ",  " + stats + ",  " + loc);
+            }
+        } catch (SQLException ex) {
+        }
+
+
         System.out.println("Here is the description of the equipment by type released before YEAR");
+        
     }
 }
