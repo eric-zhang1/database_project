@@ -14,8 +14,8 @@ FROM (EQUIPMENT_TYPE AS T JOIN EQUIPMENT_MAIN AS E ON T.Model = E.Model
 GROUP BY T.Model, T.Manufacturer, T.Year, T.Description
 ORDER BY Total_Service_Requests DESC;
 
-/* CustomerRatings */
-CREATE VIEW CustomerRatings AS
+/* UnsatisfiedCustomers */
+CREATE VIEW UnsatisifiedCustomers AS
 SELECT C.User_ID, C.Fname, C.Lname, AVG(R.Rating) AS Avg_Rating
 FROM CUSTOMER AS C JOIN RATING_REVIEW AS R ON C.User_ID = R.Customer_ID
 GROUP BY C.User_ID, C.Fname, C.Lname
