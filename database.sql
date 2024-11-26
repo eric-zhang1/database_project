@@ -1,5 +1,5 @@
 --
--- File generated with SQLiteStudio v3.4.4 on Sun Nov 24 14:26:58 2024
+-- File generated with SQLiteStudio v3.4.4 on Tue Nov 26 16:44:13 2024
 --
 -- Text encoding used: System
 --
@@ -7,30 +7,27 @@ PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
 
 -- Table: Customer
-CREATE TABLE IF NOT EXISTS Customer(
-    User_ID text NOT NULL, Fname text, Lname text, Address text, Phone text, Email text, Start_Date text, Status text, 
-    primary key(User_ID)
-);
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U001', 'Olivia', 'Bennett', '5828 Knight Dr', '(206) 555-0178', 'olivia.bennett@email.com', '1/15/2020', 'Active');
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U002', 'Ethan', 'Carter', '4567 River Rd', '(512) 555-0325', 'ethan.carter@email.com', '2/20/2021', 'Inactive');
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U003', 'Mia', 'Rodriguez', '8910 Mountain Ave', '(312) 555-0462', 'mia.rodriguez@email.com', '3/5/2021', 'Active');
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U004', 'Noah', 'Hughes', '2345 Hill Ct', '(720) 555-0789', 'noah.hughes@email.com', '4/12/2022', 'Inactive');
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U005', 'Ava', 'Price', '6789 Sunset Dr', '(305) 555-0914', 'ava.price@email.com', '1/1/1999', 'Inactive');
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U006', 'Liam', 'Nguyen', '1357 Beach St', '(212) 555-0146', 'liam.nguyen@email.com', '6/30/2019', 'Inactive');
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U007', 'Sophia', 'Rivera', '2468 Plaza Way', '(415) 555-0284', 'sophia.rivera@email.com', '7/15/2000', 'Active');
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U008', 'Mason', 'Cooper', '7890 Bridge Ln', '(404) 555-0675', 'mason.cooper@email.com', '8/22/2004', 'Active');
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U009', 'Isabella', 'Flores', '1592 Main Ct', '(617) 555-0187', 'isabella.flores@email.com', '9/10/2018', 'Active');
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U010', 'Lucas', 'Reed', '3571 Market St', '(503) 555-0235', 'lucas.reed@email.com', '10/1/2010', 'Inactive');
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U011', 'Harper', 'Morgan', '8623 Harbor Dr', '(713) 555-0399', 'harper.morgan@email.com', '11/5/2008', 'Active');
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U012', 'Jackson', 'Kelly', '4680 Valley St', '(215) 555-0112', 'jackson.kelly@email.com', '8/21/1990', 'Inactive');
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U013', 'Grace', 'Price', '1254 School Ln', '(602) 555-0573', 'grace.price@email.com', '1/28/2024', 'Active');
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U014', 'Alexander', 'Wood', '7891 College Ave', '(214) 555-0491', 'alexander.wood@email.com', '2/15/2023', 'Active');
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U015', 'Ella', 'Torres', '2460 Stadium St', '(615) 555-0358', 'ella.torres@email.com', '3/30/2020', 'Inactive');
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U016', 'Chloe', 'Patel', '3210 Festival Rd', '(213) 555-0678', 'chloe.patel@email.com', '4/5/2021', 'Active');
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U017', 'Benjamin', 'Kim', '6543 Highway Ct', '(310) 555-0912', 'benjamin.kim@email.com', '5/18/2021', 'Inactive');
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U018', 'Amelia', 'Thompson', '9876 Plaza Ave', '(202) 555-0345', 'amelia.thompson@email.com', '6/22/2022', 'Active');
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U019', 'William', 'Lewis', '1358 Arena Ln', '(505) 555-0123', 'william.lewis@email.com', '1/6/2000', 'Active');
-INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) VALUES ('U020', 'Brandon', 'Lewis', '2334 Course Dr', '(433) 555-1234', 'brandon.lewis@email.com', '2/45/2013', 'Inactive');
+CREATE TABLE IF NOT EXISTS Customer (User_ID text NOT NULL, Fname text, Lname text, Address text, Phone text, Email text, Start_Date text, Status text, Warehouse_Distance INTEGER, PRIMARY KEY (User_ID));
+INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U001', 'Olivia', 'Bennett', '5828 Knight Dr', '(206) 555-0178', 'olivia.bennett@email.com', '1/15/2020', 'Active', 17);
+INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U002', 'Ethan', 'Carter', '4567 River Rd', '(512) 555-0325', 'ethan.carter@email.com', '2/20/2021', 'Inactive', 16);
+INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U003', 'Mia', 'Rodriguez', '8910 Mountain Ave', '(312) 555-0462', 'mia.rodriguez@email.com', '3/5/2021', 'Active', 3);
+INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U004', 'Noah', 'Hughes', '2345 Hill Ct', '(720) 555-0789', 'noah.hughes@email.com', '4/12/2022', 'Inactive', 6);
+INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U005', 'Ava', 'Price', '6789 Sunset Dr', '(305) 555-0914', 'ava.price@email.com', '1/1/1999', 'Inactive', 8);
+INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U006', 'Liam', 'Nguyen', '1357 Beach St', '(212) 555-0146', 'liam.nguyen@email.com', '6/30/2019', 'Inactive', 6);
+INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U007', 'Sophia', 'Rivera', '2468 Plaza Way', '(415) 555-0284', 'sophia.rivera@email.com', '7/15/2000', 'Active', 2);
+INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U008', 'Mason', 'Cooper', '7890 Bridge Ln', '(404) 555-0675', 'mason.cooper@email.com', '8/22/2004', 'Active', 10);
+INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U009', 'Isabella', 'Flores', '1592 Main Ct', '(617) 555-0187', 'isabella.flores@email.com', '9/10/2018', 'Active', 11);
+INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U010', 'Lucas', 'Reed', '3571 Market St', '(503) 555-0235', 'lucas.reed@email.com', '10/1/2010', 'Inactive', 13);
+INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U011', 'Harper', 'Morgan', '8623 Harbor Dr', '(713) 555-0399', 'harper.morgan@email.com', '11/5/2008', 'Active', 18);
+INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U012', 'Jackson', 'Kelly', '4680 Valley St', '(215) 555-0112', 'jackson.kelly@email.com', '8/21/1990', 'Inactive', 15);
+INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U013', 'Grace', 'Price', '1254 School Ln', '(602) 555-0573', 'grace.price@email.com', '1/28/2024', 'Active', 13);
+INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U014', 'Alexander', 'Wood', '7891 College Ave', '(214) 555-0491', 'alexander.wood@email.com', '2/15/2023', 'Active', 7);
+INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U015', 'Ella', 'Torres', '2460 Stadium St', '(615) 555-0358', 'ella.torres@email.com', '3/30/2020', 'Inactive', 8);
+INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U016', 'Chloe', 'Patel', '3210 Festival Rd', '(213) 555-0678', 'chloe.patel@email.com', '4/5/2021', 'Active', 6);
+INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U017', 'Benjamin', 'Kim', '6543 Highway Ct', '(310) 555-0912', 'benjamin.kim@email.com', '5/18/2021', 'Inactive', 4);
+INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U018', 'Amelia', 'Thompson', '9876 Plaza Ave', '(202) 555-0345', 'amelia.thompson@email.com', '6/22/2022', 'Active', 2);
+INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U019', 'William', 'Lewis', '1358 Arena Ln', '(505) 555-0123', 'william.lewis@email.com', '1/6/2000', 'Active', 9);
+INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U020', 'Brandon', 'Lewis', '2334 Course Dr', '(433) 555-1234', 'brandon.lewis@email.com', '2/45/2013', 'Inactive', 13);
 
 -- Table: Drone_Main
 CREATE TABLE IF NOT EXISTS Drone_Main (Warehouse_ID text, Serial_Number text NOT NULL, Order_Number int, Name text, Model text, Status text, Location text, Manufacturer text, Year int, PRIMARY KEY (Serial_Number));
@@ -103,26 +100,26 @@ INSERT INTO Equipment_Main (Warehouse_ID, Serial_Number, Shipment_ID, Order_Numb
 
 -- Table: Equipment_Service_Request
 CREATE TABLE IF NOT EXISTS Equipment_Service_Request (Customer_ID text, Request_ID text NOT NULL, Equipment_ID text, Description text, Status text, PRIMARY KEY (Request_ID));
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U002', 'R001', 'E001', 'Machine stopped working, could not restart it ', 'Completed ');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U003', 'R002', 'E010', 'Machine failed after trying to move heavy load ', 'Requested');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U002', 'R001', 'E001', 'Machine stopped working, could not restart itÂ ', 'CompletedÂ ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U003', 'R002', 'E010', 'Machine failed after trying to move heavy loadÂ ', 'Requested');
 INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U014', 'R003', 'E003', 'Machine is taking too long to move product', 'In-Progress');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U015', 'R004', 'E007', 'Machine battery is not properly charging ', 'In-Progress');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U016', 'R005', 'E011', 'Equipment is failing under heavy load. Not as effective as advertized ', 'Completed ');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U002', 'R006', 'E020', 'Equipment providing inaccurate measurements ', 'In-Progress');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U010', 'R007', 'E019', 'Equipment is jammed and is unable to move product ', 'Completed ');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U011', 'R008', 'E013', 'Equipment is not pumping water at an effective rate, it''s too slow', 'Completed ');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U001', 'R009', 'E006', 'Machine is not able to lift items above 10 ft. Should be able to do 25 ft', 'Completed ');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U002', 'R010', 'E009', 'Machine cable severed after trying to lift heavy pallet ', 'Completed ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U015', 'R004', 'E007', 'Machine battery is not properly chargingÂ ', 'In-Progress');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U016', 'R005', 'E011', 'Equipment is failing under heavy load. Not as effective as advertizedÂ ', 'CompletedÂ ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U002', 'R006', 'E020', 'Equipment providing inaccurate measurementsÂ ', 'In-Progress');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U010', 'R007', 'E019', 'Equipment is jammed and is unable to move productÂ ', 'CompletedÂ ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U011', 'R008', 'E013', 'Equipment is not pumping water at an effective rate, it''s too slow', 'CompletedÂ ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U001', 'R009', 'E006', 'Machine is not able to lift items above 10 ft. Should be able to do 25 ft', 'CompletedÂ ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U002', 'R010', 'E009', 'Machine cable severed after trying to lift heavy palletÂ ', 'CompletedÂ ');
 INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U002', 'R011', 'E002', 'Wire snapped from machine.', 'In-Progress');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U009', 'R012', 'E014', 'The machine arrived completely broken', 'Completed ');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U009', 'R013', 'E014', 'The machine was still broken after being returned', 'Completed ');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U018', 'R014', 'E005', 'The machine was completely broken', 'Completed ');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U018', 'R015', 'E020', 'The measurements are completely off', 'Completed ');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U014', 'R016', 'E012', 'The machine broke after lifting a heavy object', 'Completed ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U009', 'R012', 'E014', 'The machine arrived completely broken', 'CompletedÂ ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U009', 'R013', 'E014', 'The machine was still broken after being returned', 'CompletedÂ ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U018', 'R014', 'E005', 'The machine was completely broken', 'CompletedÂ ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U018', 'R015', 'E020', 'The measurements are completely off', 'CompletedÂ ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U014', 'R016', 'E012', 'The machine broke after lifting a heavy object', 'CompletedÂ ');
 INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U009', 'R017', 'E014', 'Machine broke again', 'In Progress');
 INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U006', 'R018', 'E017', 'Screws are too rusty and the machine is stuck', 'Requested');
 INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U020', 'R019', 'E003', 'The paint on the machine is chipped and is proventing functionality', 'Requested');
-INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U012', 'R020', 'E020', 'The machine short circuited', 'Completed ');
+INSERT INTO Equipment_Service_Request (Customer_ID, Request_ID, Equipment_ID, Description, Status) VALUES ('U012', 'R020', 'E020', 'The machine short circuited', 'CompletedÂ ');
 
 -- Table: Equipment_Type
 CREATE TABLE IF NOT EXISTS Equipment_Type(
@@ -178,7 +175,7 @@ INSERT INTO Purchase_Order (Order_Number, Element_Type, Quantity, Value, Estimat
 
 -- Table: Rating_Review
 CREATE TABLE IF NOT EXISTS Rating_Review (Customer_ID text, Review_ID text NOT NULL, Comment text, Rating int, PRIMARY KEY (Review_ID));
-INSERT INTO Rating_Review (Customer_ID, Review_ID, Comment, Rating) VALUES ('U002', 'RR001', 'The machine broke down multiple times, I''m very dissappointed ', 1);
+INSERT INTO Rating_Review (Customer_ID, Review_ID, Comment, Rating) VALUES ('U002', 'RR001', 'The machine broke down multiple times, I''m very dissappointedÂ ', 1);
 INSERT INTO Rating_Review (Customer_ID, Review_ID, Comment, Rating) VALUES ('U018', 'RR002', 'I''m very pleased with how the machine is working', 4);
 INSERT INTO Rating_Review (Customer_ID, Review_ID, Comment, Rating) VALUES ('U014', 'RR003', 'The equipment broke after filing to lift heavy load', 1);
 INSERT INTO Rating_Review (Customer_ID, Review_ID, Comment, Rating) VALUES ('U020', 'RR004', 'The Precision R100 gave perfect measures!', 5);
@@ -207,8 +204,8 @@ INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, 
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE004', 'D019', 'D007', 'U009', 'E014', '2024-08-04', '2024-10-04', '2024-10-01', 89.95);
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE005', 'D006', 'D006', 'U005', 'E017', '2024-09-26', '2024-11-26', '', 150.0);
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE006', 'D001', 'D004', 'U018', 'E020', '2024-10-26', '2024-12-26', '', 65.75);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE007', 'D003', 'D010', 'U002', 'E005', '2024-11-12', '2024-01-12', '2024-01-12', 80.0);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE008', 'D004', 'D003', 'U012', 'E020', '2024-06-14', '2023-08-14', '2023-08-16', 67.0);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE007', 'D003', 'D010', 'U002', 'E005', '2024-11-12', '2025-01-12', '2025-01-12', 80.0);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE008', 'D004', 'D003', 'U012', 'E020', '2024-06-14', '2024-08-14', '2024-08-16', 67.0);
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE009', 'D009', 'D010', 'U020', 'E003', '2022-01-10', '2022-03-10', '2022-03-12', 49.99);
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE010', 'D013', 'D011', 'U011', 'E004', '2022-04-05', '2022-06-05', '2022-06-07', 67.99);
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE011', 'D015', 'D020', 'U002', 'E014', '2022-08-01', '2022-10-01', '2022-10-03', 89.95);
@@ -223,6 +220,7 @@ INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, 
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE020', 'D018', 'D016', 'U018', 'E005', '2024-02-14', '2024-04-14', '2024-04-12', 75.5);
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE021', 'D004', 'D017', 'U003', 'E012', '2024-11-24', '2025-01-12', '2024-11-24', 12.09000015258789);
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE022', 'D006', 'D001', 'U004', 'E015', '2025-02-12', '2024-11-24', '2024-11-24', 15.6899995803833);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE023', 'D002', 'D004', 'U001', 'E001', '2025-01-23', '2024-11-25', '2024-11-25', 13.89000034332275);
 
 -- Table: Requests
 CREATE TABLE IF NOT EXISTS Requests (Request_ID text, Request_Date date, Service_Type text);
