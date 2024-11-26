@@ -1,5 +1,5 @@
 --
--- File generated with SQLiteStudio v3.4.4 on Tue Nov 26 16:44:13 2024
+-- File generated with SQLiteStudio v3.4.4 on Tue Nov 26 17:24:54 2024
 --
 -- Text encoding used: System
 --
@@ -202,8 +202,8 @@ INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, 
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE002', 'D020', 'D015', 'U002', 'E005', '2024-02-23', '2024-04-23', '2024-04-20', 75.5);
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE003', 'D011', 'D002', 'U011', 'E010', '2024-06-17', '2024-08-17', '2024-08-17', 120.25);
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE004', 'D019', 'D007', 'U009', 'E014', '2024-08-04', '2024-10-04', '2024-10-01', 89.95);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE005', 'D006', 'D006', 'U005', 'E017', '2024-09-26', '2024-11-26', '', 150.0);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE006', 'D001', 'D004', 'U018', 'E020', '2024-10-26', '2024-12-26', '', 65.75);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE005', 'D006', 'D006', 'U005', 'E017', '2024-09-26', '2024-11-26', '2025-01-01', 150.0);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE006', 'D001', 'D004', 'U018', 'E020', '2024-10-26', '2024-12-26', '2025-01-01', 65.75);
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE007', 'D003', 'D010', 'U002', 'E005', '2024-11-12', '2025-01-12', '2025-01-12', 80.0);
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE008', 'D004', 'D003', 'U012', 'E020', '2024-06-14', '2024-08-14', '2024-08-16', 67.0);
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE009', 'D009', 'D010', 'U020', 'E003', '2022-01-10', '2022-03-10', '2022-03-12', 49.99);
@@ -219,8 +219,8 @@ INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, 
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE019', 'D005', 'D011', 'U006', 'E017', '2024-10-30', '2024-12-30', '2024-12-28', 150.0);
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE020', 'D018', 'D016', 'U018', 'E005', '2024-02-14', '2024-04-14', '2024-04-12', 75.5);
 INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE021', 'D004', 'D017', 'U003', 'E012', '2024-11-24', '2025-01-12', '2024-11-24', 12.09000015258789);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE022', 'D006', 'D001', 'U004', 'E015', '2025-02-12', '2024-11-24', '2024-11-24', 15.6899995803833);
-INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE023', 'D002', 'D004', 'U001', 'E001', '2025-01-23', '2024-11-25', '2024-11-25', 13.89000034332275);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE022', 'D006', 'D001', 'U004', 'E015', '2024-05-13', '2024-11-24', '2024-11-24', 15.6899995803833);
+INSERT INTO Rental (Rental_ID, Delivery_Drone_ID, Pickup_Drone_ID, Customer_ID, Equipment_ID, Checkout_Date, Due_Date, Return_Date, Rental_Fee) VALUES ('RE023', 'D002', 'D004', 'U001', 'E001', '2024-01-14', '2024-11-25', '2024-11-25', 13.89000034332275);
 
 -- Table: Requests
 CREATE TABLE IF NOT EXISTS Requests (Request_ID text, Request_Date date, Service_Type text);
