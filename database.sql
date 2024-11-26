@@ -1,5 +1,5 @@
 --
--- File generated with SQLiteStudio v3.4.4 on Tue Nov 26 17:24:54 2024
+-- File generated with SQLiteStudio v3.4.4 on Tue Nov 26 17:33:28 2024
 --
 -- Text encoding used: System
 --
@@ -30,27 +30,27 @@ INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, 
 INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance) VALUES ('U020', 'Brandon', 'Lewis', '2334 Course Dr', '(433) 555-1234', 'brandon.lewis@email.com', '2/45/2013', 'Inactive', 13);
 
 -- Table: Drone_Main
-CREATE TABLE IF NOT EXISTS Drone_Main (Warehouse_ID text, Serial_Number text NOT NULL, Order_Number int, Name text, Model text, Status text, Location text, Manufacturer text, Year int, PRIMARY KEY (Serial_Number));
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W003', 'D001', '', 'Skyhawk 1', 'Falcon X100', 'Active', 'Seattle, WA', 'AeroTech', 2018);
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W002', 'D002', '', 'Skyhawk 2', 'Eagle Z200', 'In Maintenance', 'Austin, TX', 'SkyVision', 2021);
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W012', 'D003', '', 'Falcon 3', 'Nimbus V300', 'Active', 'Chicago, IL', 'Altitude Tech', 2022);
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W005', 'D004', '', 'Falcon 4', 'Storm R600', 'Active', 'Denver, CO', 'Cloud Dynamics', 2023);
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W005', 'D005', '', 'Thunderbolt A', 'Blackhawk 4000', 'In Maintenance', 'Miami, FL', 'Falcon Industries', 2024);
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W012', 'D006', '', 'Thunderbolt B', 'Scout Pro 500', 'Active', 'New York, NY', 'Vantage Robotics', 2021);
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W003', 'D007', '', 'Zephyr 1', 'Falcon X200', 'Active', 'San Francisco, CA', 'AeroTech', 2020);
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W020', 'D008', '', 'Zephyr 2', 'Cumulus Q600', 'In Maintenance', 'Atlanta, GA', 'Drone Innovations', 2022);
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W018', 'D009', '', 'Horizon 1', 'Explorer R300', 'Active', 'Boston, MA', 'Rover Tech', 2022);
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W017', 'D010', '', 'Horizon 2', 'Sentinel A100', 'Active', 'Portland, OR', 'Guardian Drones', 2024);
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W001', 'D011', '', 'Swift 1', 'Eagle Z300', 'Active', 'Houston, TX', 'SkyVision', 2022);
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W008', 'D012', '', 'Swift 2', 'Storm R500', 'Active', 'Philadelphia, PA', 'Cloud Dynamics', 2021);
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W007', 'D013', '', 'Scout 1', 'Falcon X100', 'In Maintenance', 'Phoenix, AZ', 'AeroTech', 2018);
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W015', 'D014', '', 'Scout 2', 'Eagle Z200', 'Active', 'Dallas, TX', 'SkyVision', 2021);
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W016', 'D015', '', 'Guardian 1', 'Nimbus V300', 'Active', 'Nashville, TN', 'Altitude Tech', 2022);
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W016', 'D016', '', 'Guardian 2', 'Storm R600', 'Active', 'Miami, FL', 'Cloud Dynamics', 2023);
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W003', 'D017', '', 'Viper 1', 'Blackhawk 4000', 'Active', 'Orlando, FL', 'Falcon Industries', 2024);
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W005', 'D018', '', 'Viper 2', 'Scout Pro 500', 'Active', 'Salt Lake City, UT', 'Vantage Robotics', 2021);
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W017', 'D019', '', 'Rover 1', 'Falcon X200', 'In Maintenance', 'San Diego, CA', 'AeroTech', 2020);
-INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W004', 'D020', '', 'Rover 2', 'Cumulus Q600', 'Active', 'Nashville, TN', 'Drone Innovations', 2022);
+CREATE TABLE IF NOT EXISTS Drone_Main (Warehouse_ID text, Serial_Number text NOT NULL, Order_Number TEXT, Name text, Model text, Status text, Location text, Manufacturer text, Year int, PRIMARY KEY (Serial_Number));
+INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W003', 'D001', 'ON012', 'Skyhawk 1', 'Falcon X100', 'Active', 'Seattle, WA', 'AeroTech', 2018);
+INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W002', 'D002', 'ON003', 'Skyhawk 2', 'Eagle Z200', 'In Maintenance', 'Austin, TX', 'SkyVision', 2021);
+INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W012', 'D003', 'ON005', 'Falcon 3', 'Nimbus V300', 'Active', 'Chicago, IL', 'Altitude Tech', 2022);
+INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W005', 'D004', 'ON007', 'Falcon 4', 'Storm R600', 'Active', 'Denver, CO', 'Cloud Dynamics', 2023);
+INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W005', 'D005', 'ON009', 'Thunderbolt A', 'Blackhawk 4000', 'In Maintenance', 'Miami, FL', 'Falcon Industries', 2024);
+INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W012', 'D006', 'ON008', 'Thunderbolt B', 'Scout Pro 500', 'Active', 'New York, NY', 'Vantage Robotics', 2021);
+INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W003', 'D007', 'ON006', 'Zephyr 1', 'Falcon X200', 'Active', 'San Francisco, CA', 'AeroTech', 2020);
+INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W020', 'D008', 'ON010', 'Zephyr 2', 'Cumulus Q600', 'In Maintenance', 'Atlanta, GA', 'Drone Innovations', 2022);
+INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W018', 'D009', 'ON001', 'Horizon 1', 'Explorer R300', 'Active', 'Boston, MA', 'Rover Tech', 2022);
+INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W017', 'D010', 'ON003', 'Horizon 2', 'Sentinel A100', 'Active', 'Portland, OR', 'Guardian Drones', 2024);
+INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W001', 'D011', 'ON004', 'Swift 1', 'Eagle Z300', 'Active', 'Houston, TX', 'SkyVision', 2022);
+INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W008', 'D012', 'ON007', 'Swift 2', 'Storm R500', 'Active', 'Philadelphia, PA', 'Cloud Dynamics', 2021);
+INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W007', 'D013', 'ON012', 'Scout 1', 'Falcon X100', 'In Maintenance', 'Phoenix, AZ', 'AeroTech', 2018);
+INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W015', 'D014', 'ON003', 'Scout 2', 'Eagle Z200', 'Active', 'Dallas, TX', 'SkyVision', 2021);
+INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W016', 'D015', 'ON005', 'Guardian 1', 'Nimbus V300', 'Active', 'Nashville, TN', 'Altitude Tech', 2022);
+INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W016', 'D016', 'ON013', 'Guardian 2', 'Storm R600', 'Active', 'Miami, FL', 'Cloud Dynamics', 2023);
+INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W003', 'D017', 'ON009', 'Viper 1', 'Blackhawk 4000', 'Active', 'Orlando, FL', 'Falcon Industries', 2024);
+INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W005', 'D018', 'ON008', 'Viper 2', 'Scout Pro 500', 'Active', 'Salt Lake City, UT', 'Vantage Robotics', 2021);
+INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W017', 'D019', 'ON006', 'Rover 1', 'Falcon X200', 'In Maintenance', 'San Diego, CA', 'AeroTech', 2020);
+INSERT INTO Drone_Main (Warehouse_ID, Serial_Number, Order_Number, Name, Model, Status, Location, Manufacturer, Year) VALUES ('W004', 'D020', 'ON010', 'Rover 2', 'Cumulus Q600', 'Active', 'Nashville, TN', 'Drone Innovations', 2022);
 
 -- Table: Drone_Type
 CREATE TABLE IF NOT EXISTS Drone_Type (Model text NOT NULL, Manufacturer text NOT NULL, Year int NOT NULL, Weight_Capacity int, Distance Autonomy int, Max_Speed int, Warranty_Expiration date);
@@ -76,7 +76,7 @@ INSERT INTO Drone_Type (Model, Manufacturer, Year, Weight_Capacity, Distance, Ma
 INSERT INTO Drone_Type (Model, Manufacturer, Year, Weight_Capacity, Distance, Max_Speed, Warranty_Expiration) VALUES ('Explorer R300', 'Rover Tech', 2022, 18, 35, 42, '12/20/2026');
 
 -- Table: Equipment_Main
-CREATE TABLE IF NOT EXISTS Equipment_Main (Warehouse_ID text, Serial_Number text NOT NULL, Shipment_ID text, Order_Number int, Request_ID text, Model text, Year int, Status text, Location text, Manufacturer text, PRIMARY KEY (Serial_Number));
+CREATE TABLE IF NOT EXISTS Equipment_Main (Warehouse_ID text, Serial_Number text NOT NULL, Shipment_ID text, Order_Number TEXT, Request_ID text, Model text, Year int, Status text, Location text, Manufacturer text, PRIMARY KEY (Serial_Number));
 INSERT INTO Equipment_Main (Warehouse_ID, Serial_Number, Shipment_ID, Order_Number, Request_ID, Model, Year, Status, Location, Manufacturer) VALUES ('W001', 'E001', 'S001', 'ON011', '', 'EarthMover 1500', 2018, 'Available', '2940 Some Lane, Jackson, Mississippi', 'HeavyMachinery Inc.');
 INSERT INTO Equipment_Main (Warehouse_ID, Serial_Number, Shipment_ID, Order_Number, Request_ID, Model, Year, Status, Location, Manufacturer) VALUES ('W002', 'E002', 'S002', 'ON013', 'R004', 'SolarPanel Pro', 2022, 'Under Repair', '4760 Random Street, Meeker, Oklahoma', 'EcoEnergy');
 INSERT INTO Equipment_Main (Warehouse_ID, Serial_Number, Shipment_ID, Order_Number, Request_ID, Model, Year, Status, Location, Manufacturer) VALUES ('W003', 'E003', 'S001', 'ON001', '', 'ProLift 300', 2019, 'Unavailable', '1224 Unreal Avenue, Little Canyon, Texas', 'LiftTech');
@@ -148,10 +148,7 @@ INSERT INTO Equipment_Type (Model, Year, Manufacturer, Description, Type, Warran
 INSERT INTO Equipment_Type (Model, Year, Manufacturer, Description, Type, Warranty_Expiration, Weight, Dimensions) VALUES ('Grader Pro 250', 2022, 'Grading Solutions', 'Precision grading machine', 'Grading Equipment', '5/25/2026', 900, '80x60x30');
 
 -- Table: Purchase_Order
-CREATE TABLE IF NOT EXISTS Purchase_Order(
-    Order_Number int NOT NULL, Element_Type text, Quantity int, Value float, Estimated_Arrival_Date date, Actual_Arrival_Date date,
-    primary key(Order_Number)
-);
+CREATE TABLE IF NOT EXISTS Purchase_Order (Order_Number TEXT NOT NULL, Element_Type text, Quantity int, Value float, Estimated_Arrival_Date date, Actual_Arrival_Date date, PRIMARY KEY (Order_Number));
 INSERT INTO Purchase_Order (Order_Number, Element_Type, Quantity, Value, Estimated_Arrival_Date, Actual_Arrival_Date) VALUES ('ON001', 'ProLift 300', 10, 150000.0, '1/10/2024', '1/8/2024');
 INSERT INTO Purchase_Order (Order_Number, Element_Type, Quantity, Value, Estimated_Arrival_Date, Actual_Arrival_Date) VALUES ('ON002', 'GigaRig 5000', 5, 250000.0, '12/9/2024', '');
 INSERT INTO Purchase_Order (Order_Number, Element_Type, Quantity, Value, Estimated_Arrival_Date, Actual_Arrival_Date) VALUES ('ON003', 'Eagle Z200', 7, 14000.0, '1/23/2024', '2/23/2024');
