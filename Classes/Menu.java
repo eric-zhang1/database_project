@@ -102,10 +102,11 @@ public class Menu {
      * Add a new customer to the system.
      */
     private void addCustomer() {
-        String insertCustSQLStmt = "INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status)" + 
-                                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+        String insertCustSQLStmt = "INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status, Warehouse_Distance)" + 
+                                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
         PreparedStatement insertCustomer;
         String userId, firstName, lastName, address, phone, email, startDate, status;
+        int wdistance;
         while (true) {
             System.out.print("Enter User ID: ");
             userId = scanner.nextLine();
@@ -137,6 +138,9 @@ public class Menu {
         System.out.print("Enter Status: ");
         status = scanner.nextLine();
 
+        System.out.print("Enter Distance from nearest warehouse: ");
+        wdistance = Integer.parseInt(scanner.nextLine());
+
         try {
             /*
              * INSERT INTO Customer (User_ID, Fname, Lname, Address, Phone, Email, Start_Date, Status) 
@@ -151,6 +155,7 @@ public class Menu {
             insertCustomer.setString(6, email);
             insertCustomer.setString(7, startDate);
             insertCustomer.setString(8, status);
+            insertCustomer.setInt(9, wdistance);
             insertCustomer.executeUpdate();
 
             insertCustomer.close();
@@ -350,12 +355,14 @@ public class Menu {
                 String Email = rSet.getString("Email");
                 String Start_Date = rSet.getString("Start_Date");
                 String Status = rSet.getString("Status");
+                int wdistance = rSet.getInt("Warehouse_Distance");
                 System.out.println("Name: " + Fname + " " + Lname);
                 System.out.println("Address: " + Address);
                 System.out.println("Phone Number: " + Phone);
                 System.out.println("Email: " + Email);
                 System.out.println("Start Date: " + Start_Date);
-                System.out.println("Status" + Status);
+                System.out.println("Status: " + Status);
+                System.out.println("Distance from warehouse: " + wdistance);
             } else {
                 System.out.println("Customer with User ID: " + userID + " does not exist.");
             }
@@ -438,7 +445,6 @@ public class Menu {
         String numberSequence = ID.substring(2);    // Grabs the 3 number sequence
         int newIDNum = Integer.parseInt(numberSequence) + 1;
         String newID = ID.substring(0, 2) + String.format("%03d", newIDNum);
-        System.out.println(newID);
         return newID;
     }
 
@@ -655,7 +661,7 @@ public class Menu {
             }
             rSet.next();
             String manufacturer = rSet.getString("Manufacturer");
-            System.out.println("The most popular manufactuere is " + manufacturer);
+            System.out.println("The most popular manufacturer is " + manufacturer);
         } catch (SQLException e) {
             System.err.println("Error finding the most popular manufacturer");
             System.exit(0);
