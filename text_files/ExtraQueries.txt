@@ -1,18 +1,17 @@
-/* Find the list of drones in a specific purchase order */
-SELECT * 
-From DRONE_MAIN NATURAL JOIN Purchase_Order 
-WHERE DRONE_MAIN.Order_Number = 'Specified order number'; 
+/*This query returns a list of equipment from purchase orders arriving on a specific date (given by DATE)*/
+SELECT Equipment_Main.Serial_Number
+FROM (Equipment_Main NATURAL JOIN Equipment_Type) NATURAL JOIN Purchase_Order
+WHERE Purchase_Order.Actual_Arrival_Date = 'DATE'; 
 
-/* Gather a list of customers who have placed more than 3 service requests */
-SELECT FName, LName 
-FROM CUSTOMER JOIN EQUIPMENT_SERVICE_REQUEST ON CUSTOMER.User_ID = EQUIPMENT_SERVICE_REQUEST.Customer_ID 
-GROUP BY CUSTOMER.User_ID, CUSTOMER.FName, CUSTOMER.LName 
-HAVING COUNT(EQUIPMENT_SERVICE_REQUEST.Request_ID) > 3;  
+/*This query returns a list of customers who have placed more than 3 equipment service requests*/
+SELECT Customer.Fname, Customer.Lname
+FROM Customer JOIN Equipment_Service_Request ON User_ID = Customer_ID
+GROUP BY Customer.User_ID, Customer.Fname, Customer.Lname
+HAVING COUNT(Equipment_Service_Request.Request_ID) > 3;  
 
-/* Find the warehouse with the highest amount of stored drones  */
-SELECT Warehouse_ID 
-FROM WAREHOUSE
-JOIN DRONE_MAIN ON WAREHOUSE.Warehouse_ID = DRONE_MAIN.Warehouse_ID  
-GROUP BY WAREHOUSE.Warehouse_ID 
-ORDER BY COUNT(DRONE_MAIN.Serial_Number) DESC 
-LIMIT 1; 
+/*This query returns the warehouse with the highest number of stored drones and that number*/
+SELECT Warehouse.Warehouse_ID, COUNT(Drone_Main.Serial_Number) AS Num_Stored_Drones
+FROM Warehouse NATURAL JOIN (Drone_Main NATURAL JOIN Drone_Type)
+GROUP BY Warehouse.Warehouse_ID
+ORDER BY COUNT(Drone_Main.Serial_Number) DESC
+LIMIT 1;
