@@ -7,3 +7,4 @@ Queries.txt contains the first 6 SQL queries.
 ExtraQueries.txt contains the 3 extra SQL queries.
 AdvancedQueries.txt contains the 8 advanced SQL queries.
 Views.txt contains the 3 views for the database.
+Create.txt contains the SQL code to create each table of the database.
