@@ -1,9 +1,8 @@
-/* Provide a list of member names, along with the total combined amount of all items they have rented out. */
+/*This query returns a list of member names, along with the total combined amount of all items they have rented out*/
 
-SELECT Fname, Lname, COUNT(RENTAL.Rental_ID) AS Total_Rented_Out 
-FROM CUSTOMER 
-JOIN RENTAL ON CUSTOMER.User_ID = RENTAL.Customer_ID 
-GROUP BY CUSTOMER.User_ID, CUSTOMER.Fname, CUSTOMER.Lname;
+SELECT Customer.Fname, Customer.Lname, COUNT(Rental.Rental_ID) AS Num_Items
+FROM Customer JOIN Rental ON User_ID = Customer_ID
+GROUP BY Customer.User_ID, Customer.Fname, Customer.Lname;
 
 /* Provide a list of member names and email addresses for members who have rented more equipment than the average member. */
 
