@@ -1,0 +1,20 @@
+﻿W003,D001,ON012,Skyhawk 1,Falcon X100,Active,"Seattle, WA",AeroTech,2018
+W002,D002,ON003,Skyhawk 2,Eagle Z200,In Maintenance,"Austin, TX",SkyVision,2021
+W012,D003,ON005,Falcon 3,Nimbus V300,Active,"Chicago, IL",Altitude Tech,2022
+W005,D004,ON007,Falcon 4,Storm R600,Active,"Denver, CO",Cloud Dynamics,2023
+W005,D005,ON009,Thunderbolt A,Blackhawk 4000,In Maintenance,"Miami, FL",Falcon Industries,2024
+W012,D006,ON017,Thunderbolt B,Scout Pro 600,Active,"New York, NY",Vantage Robotics,2021
+W003,D007,ON006,Zephyr 1,Falcon X200,Active,"San Francisco, CA",AeroTech,2020
+W020,D008,ON010,Zephyr 2,Cumulus Q600,In Maintenance,"Atlanta, GA",Drone Innovations,2022
+W018,D009,ON009,Horizon 1,Blackhawk 4000,Active,"Boston, MA",Rover Tech,2022
+W017,D010,ON005,Horizon 2,Nimbus V300,Active,"Portland, OR",Guardian Drones,2024
+W001,D011,ON018,Swift 1,Eagle Z300.1,Active,"Houston, TX",SkyVision,2022
+W008,D012,ON007,Swift 2,Storm R600,Active,"Philadelphia, PA",Cloud Dynamics,2021
+W007,D013,ON019,Scout 1,Falcon X300,In Maintenance,"Phoenix, AZ",AeroTech,2018
+W015,D014,ON003,Scout 2,Eagle Z200,Active,"Dallas, TX",SkyVision,2021
+W016,D015,ON005,Guardian 1,Nimbus V300,Active,"Nashville, TN",Altitude Tech,2022
+W016,D016,ON007,Guardian 2,Storm R600,Active,"Miami, FL",Cloud Dynamics,2023
+W003,D017,ON009,Viper 1,Blackhawk 4000,Active,"Orlando, FL",Falcon Industries,2024
+W005,D018,ON008,Viper 2,Scout Pro 500,Active,"Salt Lake City, UT",Vantage Robotics,2021
+W017,D019,ON006,Rover 1,Falcon X200,In Maintenance,"San Diego, CA",AeroTech,2020
+W004,D020,ON010,Rover 2,Cumulus Q600,Active,"Nashville, TN",Drone Innovations,2022

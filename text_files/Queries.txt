@@ -1,0 +1,33 @@
+/*This query returns the type of all Equipment by MANUFACTURER released after YEAR (where MANUFACTURER and YEAR are specific values)*/
+SELECT Type
+FROM Equipment_Main NATURAL JOIN Equipment_Type
+WHERE Manufacturer = ‘MANUFACTURER’ AND Year > 'YEAR';
+
+/*This query returns all the equipment and date(s) of their checkout(s) from a single member (given by MEMBER_ID)*/
+SELECT Checkout_Date, Equipment_ID
+FROM Customer, Rental, (Equipment_Main NATURAL JOIN Equipment_Type)
+WHERE Customer.User_ID = Rental.Customer_ID AND Rental.Equipment_ID = Equipment_Main.Serial_Number AND Customer.User_ID = 'MEMBER_ID';
+
+/*This query returns all drones by weight capacity and its unique identifiers with 2 or less units in a specific warehouse (given by WAREHOUSE_ID)*/
+SELECT Drone_Type.Weight_Capacity
+FROM Warehouse NATURAL JOIN (Drone_Main NATURAL JOIN Drone_Type)
+WHERE Warehouse.Warehouse_ID = 'WAREHOUSE_ID'
+GROUP BY Drone_Type.Weight_Capacity
+HAVING COUNT(Drone_Main.Serial_Number) <= 2
+
+/*This query returns all the members that live more than 15 miles away from the warehouse who checked out equipment delivered by a particular drone (given by SERIAL_NUMBER), as well as the equipment they checked out*/
+SELECT Customer.User_ID, Rental.Equipment_ID
+FROM Customer, Rental
+WHERE Customer.UserID = Rental.Customer_ID AND Customer.Warehouse_Distance > 15 AND Rental.Delivery_Drone_ID = 'SERIAL_NUMBER';
+
+/*This query returns the total number of unique drones that have picked up items checked out at ADDRESS (a specific value)*/
+SELECT COUNT(DISTINCT Pickup_Drone_ID)
+FROM Rental, Customer
+WHERE Rental.Customer_ID = Customer.User_ID AND Customer.Address = 'ADDRESS';
+
+/*This query returns the member who has checked out the most equipment and the total number of items they have checked out*/
+SELECT Customer_ID, COUNT (Equipment_ID) AS Total_Equipment_Rented
+FROM Rental
+GROUP BY Customer_Id
+ORDER BY Total_Equipment_Rented DESC
+LIMIT 1;
